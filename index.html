@@ -3,15 +3,49 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Emily Cheng Photography </title>
+        <title>Emily Cheng Photography</title>
+        <meta name="description" content="A photography portfolio spanning nature, cities, food, and people.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/styles.css">
     </head>
 
     <body>
+        <header class="site-header">
+            <a href="#" class="logo">Emily Cheng</a>
+            <nav class="filters" aria-label="Photo categories">
+                <button class="filter-btn is-active" data-category="all">All</button>
+                <button class="filter-btn" data-category="nature">Nature &amp; Wildlife</button>
+                <button class="filter-btn" data-category="city">City &amp; Culture</button>
+                <button class="filter-btn" data-category="food">Food</button>
+                <button class="filter-btn" data-category="people">People</button>
+            </nav>
+        </header>
+
         <main>
-            <h1> Emily Cheng Photography </h1>
-            <p> portolio under construction. </p>
+            <section class="intro">
+                <h1>Photography</h1>
+                <p>Places I've been, things I've eaten, people I've met.</p>
+            </section>
+
+            <section class="section" aria-labelledby="gallery-heading">
+                <h2 id="gallery-heading" class="section-title">Gallery</h2>
+
+                <div class="gallery" id="gallery">
+                    <div class="card placeholder"></div>
+                    <div class="card placeholder"></div>
+                    <div class="card placeholder"></div>
+                    <div class="card placeholder"></div>
+                    <div class="card placeholder"></div>
+                    <div class="card placeholder"></div>
+                </div>
+            </section>
         </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Emily Cheng. All rights reserved.</p>
+        </footer>
         <script src="js/main.js"></script>
     </body>
 </html>
