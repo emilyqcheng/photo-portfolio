@@ -367,21 +367,9 @@ export function initLightbox() {
   els.btnSlideshow.addEventListener('click', toggleSlideshow);
   els.btnDetails.addEventListener('click', toggleDetails);
 
-  // Clicking away from the photo closes the viewer.
-  //
-  // The obvious version of this check — event.target === event.currentTarget
-  // — was my bug: it only fires when you click the .lightbox element ITSELF,
-  // and the three grid children (rail, stage, info panel) tile the entire
-  // overlay. There is no bare backdrop left to hit, so the click always
-  // landed on .lb-stage instead and nothing happened.
-  //
-  // .closest() walks up from the clicked element looking for a match, so
-  // this reads as: "unless you clicked a control, the info panel, or the
-  // photo itself, treat it as clicking away."
-  els.root.addEventListener('click', (event) => {
-    if (event.target.closest('button, .lb-info, .lb-rail, #lb-img')) return;
-    close();
-  });
+  // No backdrop-click-to-close: Escape and the X button cover it, and with
+  // the image now filling its whole box (see the object-fit note in the CSS)
+  // there is very little genuine backdrop left to click anyway.
 
   els.img.addEventListener('load', () => {
     els.figure.classList.remove('is-loading');
