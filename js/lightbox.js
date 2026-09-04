@@ -128,10 +128,17 @@ function render() {
   els.img.alt = photo.alt || '';
 
   setText(els.title, photo.title);
-  // Skip the location line when it just repeats the title. For most photos
-  // the caption IS the place name, so printing both is redundant — it only
-  // differs where the title is something like "A Thousand Ripples".
-  setText(els.location, photo.location === photo.title ? '' : photo.location);
+
+  // The location line is deliberately NOT shown. `location` in captions.json
+  // is geocoder input — it's verbose on purpose ("Jökulsárlón Glacier Lagoon,
+  // Iceland") so Nominatim can resolve it to coordinates. Your titles already
+  // name the place, so printing both just says the same thing twice in two
+  // slightly different ways.
+  //
+  // If you ever want a place line that ISN'T just a restatement, the right
+  // move is a separate display field in captions.json rather than reusing
+  // this one — one field, one job.
+  setText(els.location, '');
   setText(els.date, photo.date_display);
   setText(els.notes, photo.notes);
 
