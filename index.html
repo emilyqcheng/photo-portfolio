@@ -1,51 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Emily Cheng Photography</title>
-        <meta name="description" content="A photography portfolio spanning nature, cities, food, and people.">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emily Cheng | Photography</title>
+  <meta name="description" content="Photography by Emily Cheng — nature and wildlife, cities and culture, food, and people.">
 
-    <body>
-        <header class="site-header">
-            <a href="#" class="logo">Emily Cheng</a>
-            <nav class="filters" aria-label="Photo categories">
-                <button class="filter-btn is-active" data-category="all">All</button>
-                <button class="filter-btn" data-category="nature">Nature &amp; Wildlife</button>
-                <button class="filter-btn" data-category="city">City &amp; Culture</button>
-                <button class="filter-btn" data-category="food">Food</button>
-                <button class="filter-btn" data-category="people">People</button>
-            </nav>
-        </header>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
 
-        <main>
-            <section class="intro">
-                <h1>Photography</h1>
-                <p>Places I've been, things I've eaten, people I've met.</p>
-            </section>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
 
-            <section class="section" aria-labelledby="gallery-heading">
-                <h2 id="gallery-heading" class="section-title">Gallery</h2>
+<body>
 
-                <div class="gallery" id="gallery">
-                    <div class="card placeholder"></div>
-                    <div class="card placeholder"></div>
-                    <div class="card placeholder"></div>
-                    <div class="card placeholder"></div>
-                    <div class="card placeholder"></div>
-                    <div class="card placeholder"></div>
-                </div>
-            </section>
-        </main>
+  <header class="site-header">
+    <a href="index.html" class="wordmark">
+      <span class="wordmark__name">Emily Cheng</span>
+      <!-- PLACEHOLDER: Sacramento, the closest free match to your Adobe Fonts
+           script. Once you export your real wordmark as SVG, replace this
+           whole <a> block with:
+             <a href="index.html" class="wordmark">
+               <img src="images/wordmark.svg" alt="Emily Cheng — the world through my lens">
+             </a> -->
+      <span class="wordmark__tagline">the world through my lens</span>
+    </a>
 
-        <footer class="site-footer">
-            <p>&copy; 2026 Emily Cheng. All rights reserved.</p>
-        </footer>
-        <script src="js/main.js"></script>
-    </body>
+    <nav class="filters" aria-label="Photo categories">
+      <button class="filter-btn is-active" data-category="all">All</button>
+      <button class="filter-btn" data-category="nature">Nature &amp; Wildlife</button>
+      <button class="filter-btn" data-category="city">City &amp; Culture</button>
+      <button class="filter-btn" data-category="food">Food</button>
+      <button class="filter-btn" data-category="people">People &amp; Pets</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="gallery" id="gallery"></div>
+    <p class="gallery-status" id="status">Loading photographs…</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Emily Cheng</p>
+  </footer>
+
+
+  <!-- ======================================================================
+       LIGHTBOX
+       Sits in the HTML from page load, hidden. Building it here rather than
+       generating it in JavaScript means you can restyle it, or inspect it in
+       DevTools, without reading any code.
+
+       role="dialog" + aria-modal tell assistive tech this is a modal layer:
+       a screen reader will confine itself to this content while it's open,
+       which pairs with the focus trap in lightbox.js.
+       ====================================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"
+       aria-label="Photo viewer" hidden>
+
+    <!-- CONTROL RAIL — left edge on desktop, bottom bar on mobile.
+         aria-pressed marks a toggle button's on/off state, which is different
+         from a plain button. Screen readers announce "pressed" or "not
+         pressed" so the state is actually perceivable. -->
+    <div class="lb-rail">
+      <button class="lb-btn" id="lb-fullscreen" type="button" aria-label="Toggle fullscreen">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>
+        </svg>
+      </button>
+
+      <button class="lb-btn" id="lb-slideshow" type="button"
+              aria-label="Play slideshow" aria-pressed="false">
+        <!-- Both icons are always present; CSS shows one and hides the other
+             based on the .is-playing class. Swapping visibility is simpler
+             and less error-prone than rewriting the SVG in JavaScript. -->
+        <svg class="lb-icon-play" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 4l13 8-13 8V4z" fill="currentColor" stroke="none"/>
+        </svg>
+        <svg class="lb-icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 4h4v16H7zM13 4h4v16h-4z" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+
+      <button class="lb-btn" id="lb-toggle-details" type="button"
+              aria-label="Show camera details" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 10.5v6M12 7.6v.6"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="lb-close" id="lb-close" type="button" aria-label="Close viewer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+    </button>
+
+    <!-- STAGE: the photo, with an arrow on each side -->
+    <div class="lb-stage">
+      <button class="lb-arrow lb-arrow--prev" id="lb-prev" type="button"
+              aria-label="Previous photograph">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+
+      <figure class="lb-figure" id="lb-figure">
+        <img id="lb-img" alt="">
+      </figure>
+
+      <button class="lb-arrow lb-arrow--next" id="lb-next" type="button"
+              aria-label="Next photograph">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- INFO PANEL: right side on desktop, below the photo on mobile -->
+    <aside class="lb-info">
+      <p class="lb-counter" id="lb-counter"></p>
+      <h2 class="lb-title" id="lb-title"></h2>
+      <p class="lb-location" id="lb-location"></p>
+      <p class="lb-date" id="lb-date"></p>
+      <p class="lb-notes" id="lb-notes"></p>
+
+      <!-- Filled by renderDetails() in lightbox.js, toggled by the ⓘ button -->
+      <div class="lb-details" id="lb-details" hidden></div>
+    </aside>
+
+  </div>
+
+
+  <!-- type="module" enables `import` / `export`, which is how main.js pulls in
+       lightbox.js. Modules are deferred automatically, so they always run
+       after the HTML is parsed — no need to sit at the bottom of the body,
+       though leaving them here does no harm.
+
+       One consequence worth knowing: modules are subject to CORS, so they do
+       NOT work over file://. You already need a local server for fetch(),
+       so nothing changes in practice. -->
+  <script type="module" src="js/main.js"></script>
+</body>
 </html>

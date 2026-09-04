@@ -1,165 +1,666 @@
+/* ============================================================
+   DESIGN TOKENS
+   Light theme, matching your existing brand. Change a value here
+   and it propagates everywhere it's used.
+   ============================================================ */
 :root {
-    --bg: #0e0e0f;
-    --surface: #17171a;
-    --border: #2a2a2f;
-    --text: #f2f2f0;
-    --text-dim: #9a9a9f;
-    --accent: #d8b26e;
-    --max-width: 1200px;
-    --gap: 1.25rem;
-    --radius: 4px;
+  --bg: #ffffff;
+  --surface: #f2f2f0;      /* placeholder grey behind an image while it loads */
+  --border: #e6e6e3;
+  --text: #111111;
+  --text-dim: #8c8c8c;     /* inactive nav, captions, secondary info */
+
+  --max-width: 1680px;
+  --gutter: 8px;           /* space between photos — tight, like your site */
+  /* Near-full-bleed on phones, where every pixel of photo width counts;
+     roomier margins on desktop where there's space to spare. */
+  --pad: clamp(var(--gutter), 3vw, 2.5rem);
+
+  /* Lightbox backdrop. Raise the alpha toward 1 for a more solid white;
+     lower it to let more of the gallery show through behind the blur.
+     0.985 is nearly opaque with just a hint of the page beneath. */
+  --lb-backdrop: rgba(250, 250, 249, 0.985);
 }
 
-/* reset browser defaults */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
-    margin: 0;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 300;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-img {
-    display: block;
-    min-height: 100%;
-}
+img { display: block; max-width: 100%; }
 
+
+/* ============================================================
+   HEADER
+   ============================================================ */
 .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--gap);
-    padding: 1rem clamp(1rem, 4vw, 3rem);
-    background: rgba(14, 14, 15, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem var(--pad);
+  padding: 1.1rem var(--pad);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  /* Translucent white plus blur means photos soften as they scroll under the
+     header rather than vanishing behind a solid bar. */
 }
 
-.logo {
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text);
-    text-decoration: none;
+.wordmark {
+  text-decoration: none;
+  color: var(--text);
+  line-height: 1.1;
 }
 
+.wordmark__name {
+  display: block;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  /* Uppercase letters look cramped at default spacing. Loosening the
+     tracking is what makes small caps read as deliberate. */
+}
+
+.wordmark__tagline {
+  display: block;
+  font-family: 'Sacramento', cursive;   /* PLACEHOLDER — swap for your SVG */
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  color: var(--text);
+  margin-top: 0.1rem;
+}
+
+
+/* ============================================================
+   FILTER BUTTONS
+   ============================================================ */
 .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.35rem;
 }
 
 .filter-btn {
-    font-family: inherit;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease;
+  font-family: inherit;
+  /* Buttons don't inherit fonts by default — they use the OS control font.
+     Without this line these would render in a different typeface. */
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: none;
+  border: 0;
+  padding: 0.35rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease;
 }
 
-.filter-btn:hover{
-    color: var(--text);
-    border-color: var(--text-dim);
+.filter-btn:hover { color: var(--text); }
+
+/* The underline is a pseudo-element scaled from 0 to 1, not a border.
+   Animating transform is cheap because it doesn't force the browser to
+   recalculate layout — animating width or border-width would. */
+.filter-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  /* currentColor = whatever this element's `color` is right now, so the
+     underline tracks the text colour automatically. */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
+
+.filter-btn:hover::after,
+.filter-btn.is-active::after { transform: scaleX(1); }
 
 .filter-btn.is-active {
-    color: var(--bg);
-    background: var(--text);
-    border-color: var(--text);
+  color: var(--text);
+  font-weight: 500;
 }
 
 .filter-btn:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+  /* :focus-visible shows a ring only for keyboard navigation, not mouse
+     clicks. Deleting focus rings entirely is what makes sites unusable
+     without a mouse. */
 }
 
-.intro,
-.section {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 clamp(1rem, 4vw, 3rem);
-}
 
-.intro {
-    padding-top: clamp(3rem, 10vw, 7rem);
-    padding-bottom: clamp(2rem, 6vw, 4rem);
-}
+/* ============================================================
+   GALLERY — FIXED COUNT, JUSTIFIED WIDTHS
+   ============================================================
+   The gallery is a vertical stack of rows. JavaScript decides which photos
+   go in which row (3 per row on desktop); CSS decides how wide each photo
+   is within its row.
 
-.intro h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    margin: 0 0 1rem;
-}
+   THE KEY RULE is on .photo:
 
-.intro p {
-    color: var(--text-dim);
-    max-width: 38ch;
-    margin: 0;
-}
+       flex: var(--aspect) 1 0;
 
-.section {
-    margin-bottom: clamp(3rem, 8vw, 6rem);
-}
+   Read as flex-grow / flex-shrink / flex-basis. A basis of 0 means every
+   photo starts at zero width, so ALL the row's width is "free space" — and
+   flexbox hands out free space in proportion to flex-grow. Since flex-grow
+   is each photo's aspect ratio, final widths come out proportional to aspect
+   ratios.
 
-.section-title {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
-    margin: 0 0 var(--gap);
-}
-
+   Widths proportional to aspect ratio is exactly the condition for equal
+   heights. A 3:2 landscape gets twice the width of a 3:4 portrait, and both
+   land at the same height. The row's height emerges from the arithmetic
+   rather than being declared — which is why a row of three portraits comes
+   out tall and a row of three panoramas comes out short.
+   ============================================================ */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--gap);
+  display: flex;
+  flex-direction: column;     /* rows stack vertically */
+  gap: var(--gutter);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--gutter) var(--pad) 4rem;
 }
 
-.card {
-    aspect-ratio: 4 / 3;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
+.gallery__row {
+  display: flex;              /* photos sit side by side within a row */
+  gap: var(--gutter);
 }
 
-.map-placeholder {
-    display: grid;
-    place-items: center;
-    height: 420px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text-dim);
-    font-size: 0.85rem;
+/* Invisible spacer that keeps a partial last row at a sensible scale.
+   JavaScript sets --grow to the width the missing photos would have taken. */
+.gallery__filler {
+  flex: var(--grow, 1) 1 0;
 }
 
+.photo {
+  flex: var(--aspect) 1 0;
+  aspect-ratio: var(--aspect);
+
+  min-width: 0;
+  /* Flex items refuse to shrink below their content's intrinsic size unless
+     told otherwise. Without this, a wide image can force the row past the
+     container edge and cause horizontal scrolling. */
+
+  position: relative;
+  overflow: hidden;
+  /* Clips the image as it scales up on hover, so the photo grows inside a
+     fixed frame instead of pushing the layout around. */
+
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  cursor: pointer;
+  display: block;
+
+  /* Entrance animation start state. JS adds .is-visible to trigger it. */
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.photo.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.photo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The container's aspect-ratio already matches the image's, so `cover`
+     isn't meaningfully cropping — it just guarantees a perfect fill despite
+     sub-pixel rounding. */
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.photo:hover .photo__img,
+.photo:focus-visible .photo__img {
+  transform: scale(1.055);
+}
+
+/* Caption overlay: a gradient fading up from the bottom edge carrying the
+   title and date. Hidden until hover. */
+.photo__overlay {
+  position: absolute;
+  inset: 0;                   /* shorthand for top/right/bottom/left: 0 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(0.6rem, 1.6vw, 1.1rem);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.22) 38%,
+    rgba(0, 0, 0, 0) 68%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  text-align: left;
+}
+
+.photo:hover .photo__overlay,
+.photo:focus-visible .photo__overlay { opacity: 1; }
+
+.photo__title {
+  color: #fff;
+  font-size: clamp(0.78rem, 1.4vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.3;
+  /* A soft shadow keeps text legible over a bright patch of sky. */
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+.photo__meta {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.65rem, 1.1vw, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.photo:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+
+/* ============================================================
+   STATUS / EMPTY STATE
+   ============================================================ */
+.gallery-status {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem var(--pad) 6rem;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.gallery-status[hidden] { display: none; }
+/* Browsers style [hidden] as display:none by default, but ANY `display` rule
+   on the element overrides it. Declaring it explicitly avoids that whole
+   class of confusing bug. */
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem var(--pad);
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.site-footer p { margin: 0; }
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================
+   Some people experience nausea, dizziness, or migraine from on-screen
+   motion, and their operating system exposes that preference. Honouring it
+   costs a few lines and is the difference between your site being pleasant
+   or unusable for them. Photos still appear — they just don't move.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .photo {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================
+   Layout on desktop is a three-column grid:
+
+       [rail]  [photo stage]  [info panel]
+        56px       1fr            320px
+
+   On mobile it becomes a vertical stack with the rail as a bottom bar.
+   Using grid here (rather than absolute positioning) means the photo stage
+   automatically gets whatever space the rail and panel don't use, at any
+   screen size.
+   ============================================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  /* Above the sticky header (z-index 20) so nothing shows through. */
+
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 320px;
+  /* minmax(0, 1fr) instead of plain 1fr. A bare 1fr has an implicit minimum
+     of "auto" — meaning the track refuses to shrink below its content's
+     natural size. For a 2000px-tall photo that means the track stays
+     2000px tall and the image overflows. minmax(0, ...) sets the floor to
+     zero so the track can actually shrink to the viewport. */
+  grid-template-rows: minmax(0, 1fr);
+  /* A DEFINITE height for the row. This is the crux of the portrait bug:
+     percentage and max-height values need a definite parent height to
+     resolve against. When the row height was auto (content-sized), the
+     image's max-height: 100% was circular — it would have depended on the
+     very thing it was determining — so browsers ignore it and render at
+     natural size. Hence portraits overflowing and being clipped at the
+     bottom. */
+  align-items: stretch;
+
+  /* Near-white and translucent, echoing your Adobe lightbox — softer than a
+     hard black overlay, and it keeps the page faintly visible behind. */
+  background: var(--lb-backdrop);
+  backdrop-filter: blur(22px) saturate(1.1);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.is-open { opacity: 1; }
+
+.lightbox[hidden] { display: none; }
+/* [hidden] is display:none by default, but the `display: grid` above would
+   override it. Restating it explicitly is what keeps the element genuinely
+   hidden. Easy bug to spend an hour on. */
+
+
+/* ---------- Control rail ---------- */
+.lb-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.15rem 0;
+  border-right: 1px solid var(--border);
+}
+
+.lb-btn,
+.lb-close,
+.lb-arrow {
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.lb-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.lb-btn:hover,
+.lb-close:hover,
+.lb-arrow:hover { color: var(--text); }
+
+.lb-btn:hover { background: rgba(0, 0, 0, 0.05); }
+
+/* All the icons are stroked outlines, so one rule styles every SVG. Using
+   currentColor means they inherit the button's text colour and change on
+   hover for free — no separate icon states to maintain. */
+.lb-btn svg,
+.lb-close svg,
+.lb-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lb-arrow svg { width: 26px; height: 26px; }
+
+/* Active toggle states */
+.lb-btn[aria-pressed="true"] {
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.07);
+}
+
+/* Play/pause icon swap, driven by a class on the lightbox root */
+.lb-icon-pause { display: none; }
+.lightbox.is-playing .lb-icon-play { display: none; }
+.lightbox.is-playing .lb-icon-pause { display: block; }
+
+
+/* ---------- Close button ---------- */
+.lb-close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+}
+
+.lb-close svg { width: 22px; height: 22px; }
+
+
+/* ---------- Stage ---------- */
+.lb-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 1.75rem 1rem;
+  min-height: 0;
+  overflow: hidden;
+  /* Belt and braces: if a photo somehow still exceeded its box, clip it
+     here rather than letting it push the overlay past the viewport. */
+  /* min-height: 0 on a grid child is what allows it to SHRINK below its
+     content size. Without it a tall photo forces the whole overlay taller
+     than the viewport and you get a scrollbar over a fixed element. */
+}
+
+.lb-arrow {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+.lb-arrow:hover { background: rgba(0, 0, 0, 0.05); }
+
+.lb-figure {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  /* Now that the grid row above is definite, height: 100% resolves to a
+     real pixel value — which is what finally gives the image's
+     max-height: 100% something to measure against. */
+}
+
+.lb-figure img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* CONTAIN, not cover. The gallery crops to fill a frame; the viewer must
+     never crop — you're showing the whole photograph as composed. max-width
+     and max-height together with auto sizing let it scale down to fit
+     whichever dimension is the constraint. */
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+/* Fade the outgoing photo while the next one downloads, so switching feels
+   like a cross-dissolve rather than a flicker. */
+.lb-figure.is-loading img { opacity: 0.25; }
+
+
+/* ---------- Info panel ---------- */
+.lb-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1.15rem 1.5rem;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  /* Long notes scroll within the panel rather than stretching the overlay. */
+}
+
+.lb-counter {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  margin: 0 0 1.5rem;
+  font-variant-numeric: tabular-nums;
+  /* Tabular figures are all the same width, so "9 / 42" and "10 / 42" don't
+     make the text shift sideways as you page through. */
+}
+
+.lb-title {
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.35;
+  margin: 0 0 0.5rem;
+}
+
+.lb-location {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.lb-date {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0.35rem 0 0;
+}
+
+.lb-notes {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  margin: 1.15rem 0 0;
+  max-width: 34ch;
+  /* "ch" is the width of a zero in the current font, so this is roughly 34
+     characters per line. Comfortable reading sits between 45 and 75; a
+     narrow sidebar wants to be tighter than that. */
+}
+
+.lb-notes[hidden],
+.lb-location[hidden],
+.lb-date[hidden],
+.lb-title[hidden] { display: none; }
+
+
+/* ---------- Camera details ---------- */
+.lb-details {
+  margin-top: 1.75rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border);
+}
+
+.lb-details[hidden] { display: none; }
+
+.lb-details__list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+/* A two-column grid with dt/dd alternating gives a clean aligned table
+   without any table markup. */
+.lb-details__list dt {
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.lb-details__list dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.lb-details__empty {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+
+/* ---------- Mobile ---------- */
+@media (max-width: 860px) {
+  .lightbox {
+    /* Stack vertically: photo, then info, then the rail as a bottom bar. */
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto auto;
+  }
+
+  .lb-stage {
+    padding: 3.5rem 0.5rem 0.5rem;
+  }
+
+  .lb-arrow {
+    /* Float the arrows over the photo edges — on a narrow screen, giving
+       them their own columns would steal width the photo needs. */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.75);
+    z-index: 2;
+  }
+
+  .lb-arrow--prev { left: 0.35rem; }
+  .lb-arrow--next { right: 0.35rem; }
+
+  .lb-info {
+    border-left: 0;
     border-top: 1px solid var(--border);
-    padding: 2rem clamp(1rem, 4vw, 3rem);
-    color: var(--text-dim);
-    font-size: 0.8rem;
+    padding: 1rem 1.25rem;
+    max-height: 34vh;
+  }
+
+  .lb-counter { margin-bottom: 0.6rem; }
+
+  .lb-rail {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    border-right: 0;
+    border-top: 1px solid var(--border);
+    padding: 0.6rem 0;
+  }
 }

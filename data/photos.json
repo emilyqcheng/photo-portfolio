@@ -27,7 +27,9 @@
       "shutter": "1/2000",
       "iso": 100,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 06:51:02",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-002",
@@ -50,7 +52,9 @@
       "shutter": "1/640",
       "iso": 100,
       "date": "2021-07-29",
-      "date_display": "July 29, 2021"
+      "date_display": "July 29, 2021",
+      "datetime_full": "2021-07-29 17:22:35",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-003",
@@ -73,7 +77,9 @@
       "shutter": "1/800",
       "iso": 100,
       "date": "2021-07-31",
-      "date_display": "July 31, 2021"
+      "date_display": "July 31, 2021",
+      "datetime_full": "2021-07-31 12:33:19",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-004",
@@ -96,7 +102,9 @@
       "shutter": "20s",
       "iso": 100,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 10:37:07",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-005",
@@ -119,7 +127,9 @@
       "shutter": "1/250",
       "iso": 100,
       "date": "2021-07-31",
-      "date_display": "July 31, 2021"
+      "date_display": "July 31, 2021",
+      "datetime_full": "2021-07-31 07:15:03",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-006",
@@ -142,7 +152,9 @@
       "shutter": "1/2000",
       "iso": 100,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 06:57:31",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-007",
@@ -165,7 +177,9 @@
       "shutter": "1/320",
       "iso": 400,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 17:14:43",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-008",
@@ -188,7 +202,9 @@
       "shutter": "1/2000",
       "iso": 100,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 07:06:14",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-009",
@@ -211,7 +227,9 @@
       "shutter": "1/250",
       "iso": 100,
       "date": "2021-07-29",
-      "date_display": "July 29, 2021"
+      "date_display": "July 29, 2021",
+      "datetime_full": "2021-07-29 17:16:28",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-010",
@@ -234,7 +252,9 @@
       "shutter": "1/2500",
       "iso": 100,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 07:11:24",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-011",
@@ -257,7 +277,9 @@
       "shutter": "1/500",
       "iso": 400,
       "date": "2021-07-28",
-      "date_display": "July 28, 2021"
+      "date_display": "July 28, 2021",
+      "datetime_full": "2021-07-28 07:10:07",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-012",
@@ -280,7 +302,9 @@
       "shutter": "1/1000",
       "iso": 800,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 14:45:10",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-013",
@@ -303,7 +327,9 @@
       "shutter": "1/640",
       "iso": 100,
       "date": "2021-07-29",
-      "date_display": "July 29, 2021"
+      "date_display": "July 29, 2021",
+      "datetime_full": "2021-07-29 16:16:12",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-014",
@@ -326,7 +352,9 @@
       "shutter": "1/400",
       "iso": 400,
       "date": "2021-07-29",
-      "date_display": "July 29, 2021"
+      "date_display": "July 29, 2021",
+      "datetime_full": "2021-07-29 18:41:16",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-015",
@@ -349,7 +377,9 @@
       "shutter": "20s",
       "iso": 100,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 13:01:49",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-016",
@@ -372,7 +402,9 @@
       "shutter": "1/200",
       "iso": 400,
       "date": "2021-07-28",
-      "date_display": "July 28, 2021"
+      "date_display": "July 28, 2021",
+      "datetime_full": "2021-07-28 08:17:11",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-017",
@@ -395,7 +427,9 @@
       "shutter": "6s",
       "iso": 100,
       "date": "2021-07-27",
-      "date_display": "July 27, 2021"
+      "date_display": "July 27, 2021",
+      "datetime_full": "2021-07-27 03:04:32",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-018",
@@ -418,7 +452,9 @@
       "shutter": "1/400",
       "iso": 100,
       "date": "2021-07-30",
-      "date_display": "July 30, 2021"
+      "date_display": "July 30, 2021",
+      "datetime_full": "2021-07-30 12:47:18",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "nature-019",
@@ -435,13 +471,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/2000",
       "iso": 100,
       "date": "2023-04-04",
-      "date_display": "April 4, 2023"
+      "date_display": "April 4, 2023",
+      "datetime_full": "2023-04-04 14:07:20",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-020",
@@ -458,13 +496,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "200mm",
       "aperture": "f/5.6",
       "shutter": "1/800",
       "iso": 100,
       "date": "2023-04-04",
-      "date_display": "April 4, 2023"
+      "date_display": "April 4, 2023",
+      "datetime_full": "2023-04-04 10:46:16",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-021",
@@ -481,13 +521,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/400",
       "iso": 400,
       "date": "2023-04-02",
-      "date_display": "April 2, 2023"
+      "date_display": "April 2, 2023",
+      "datetime_full": "2023-04-02 16:14:10",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-022",
@@ -504,13 +546,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "25mm",
       "aperture": "f/4",
       "shutter": "1/250",
       "iso": 100,
       "date": "2023-04-05",
-      "date_display": "April 5, 2023"
+      "date_display": "April 5, 2023",
+      "datetime_full": "2023-04-05 20:36:24",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-023",
@@ -527,13 +571,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "34mm",
       "aperture": "f/4.5",
       "shutter": "1/250",
       "iso": 100,
       "date": "2023-04-04",
-      "date_display": "April 4, 2023"
+      "date_display": "April 4, 2023",
+      "datetime_full": "2023-04-04 20:03:02",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-024",
@@ -550,13 +596,15 @@
       "height": 2000,
       "aspect": 0.667,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "55mm",
       "aperture": "f/4.2",
       "shutter": "1/320",
       "iso": 200,
       "date": "2022-08-15",
-      "date_display": "August 15, 2022"
+      "date_display": "August 15, 2022",
+      "datetime_full": "2022-08-15 15:53:08",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "nature-025",
@@ -579,7 +627,9 @@
       "shutter": "1/320",
       "iso": 100,
       "date": "2022-12-29",
-      "date_display": "December 29, 2022"
+      "date_display": "December 29, 2022",
+      "datetime_full": "2022-12-29 16:49:33",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "nature-026",
@@ -596,13 +646,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/400",
       "iso": 100,
       "date": "2023-04-06",
-      "date_display": "April 6, 2023"
+      "date_display": "April 6, 2023",
+      "datetime_full": "2023-04-06 21:00:55",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-027",
@@ -619,13 +671,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/320",
       "iso": 100,
       "date": "2023-04-05",
-      "date_display": "April 5, 2023"
+      "date_display": "April 5, 2023",
+      "datetime_full": "2023-04-05 20:25:29",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-028",
@@ -642,13 +696,15 @@
       "height": 1334,
       "aspect": 1.4993,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/1250",
       "iso": 100,
       "date": "2022-12-26",
-      "date_display": "December 26, 2022"
+      "date_display": "December 26, 2022",
+      "datetime_full": "2022-12-26 14:07:43",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "nature-029",
@@ -665,13 +721,15 @@
       "height": 2000,
       "aspect": 0.645,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "38mm",
       "aperture": "f/4.8",
       "shutter": "1/400",
       "iso": 200,
       "date": "2023-04-04",
-      "date_display": "April 4, 2023"
+      "date_display": "April 4, 2023",
+      "datetime_full": "2023-04-04 19:27:54",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-030",
@@ -688,13 +746,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "100mm",
       "aperture": "f/4.5",
       "shutter": "1/200",
       "iso": 800,
       "date": "2023-04-05",
-      "date_display": "April 5, 2023"
+      "date_display": "April 5, 2023",
+      "datetime_full": "2023-04-05 20:49:45",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-031",
@@ -711,13 +771,15 @@
       "height": 2000,
       "aspect": 0.667,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "55mm",
       "aperture": "f/5.6",
       "shutter": "1/320",
       "iso": 200,
       "date": "2022-04-13",
-      "date_display": "April 13, 2022"
+      "date_display": "April 13, 2022",
+      "datetime_full": "2022-04-13 10:59:08",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "nature-032",
@@ -740,7 +802,9 @@
       "shutter": "1/160",
       "iso": 400,
       "date": "2024-12-26",
-      "date_display": "December 26, 2024"
+      "date_display": "December 26, 2024",
+      "datetime_full": "2024-12-26 14:54:34",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "nature-033",
@@ -757,13 +821,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/125",
       "iso": 200,
       "date": "2025-08-18",
-      "date_display": "August 18, 2025"
+      "date_display": "August 18, 2025",
+      "datetime_full": "2025-08-18 11:42:16",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "nature-034",
@@ -786,7 +852,9 @@
       "shutter": "1/320",
       "iso": 800,
       "date": "2022-08-18",
-      "date_display": "August 18, 2022"
+      "date_display": "August 18, 2022",
+      "datetime_full": "2022-08-18 09:44:35",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "nature-035",
@@ -803,13 +871,15 @@
       "height": 2000,
       "aspect": 0.667,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/4",
       "shutter": "1/400",
       "iso": 200,
       "date": "2022-04-13",
-      "date_display": "April 13, 2022"
+      "date_display": "April 13, 2022",
+      "datetime_full": "2022-04-13 09:48:27",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "nature-036",
@@ -832,7 +902,9 @@
       "shutter": "1/320",
       "iso": 1600,
       "date": "2024-12-26",
-      "date_display": "December 26, 2024"
+      "date_display": "December 26, 2024",
+      "datetime_full": "2024-12-26 15:21:15",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "nature-037",
@@ -849,13 +921,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "86mm",
       "aperture": "f/4.2",
       "shutter": "1/1600",
       "iso": 200,
       "date": "2023-07-03",
-      "date_display": "July 3, 2023"
+      "date_display": "July 3, 2023",
+      "datetime_full": "2023-07-03 11:58:09",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-038",
@@ -878,7 +952,9 @@
       "shutter": "1/320",
       "iso": 100,
       "date": "2022-08-17",
-      "date_display": "August 17, 2022"
+      "date_display": "August 17, 2022",
+      "datetime_full": "2022-08-17 19:15:21",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "nature-039",
@@ -895,13 +971,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "150mm",
       "aperture": "f/5.6",
       "shutter": "1/1600",
       "iso": 100,
       "date": "2023-07-02",
-      "date_display": "July 2, 2023"
+      "date_display": "July 2, 2023",
+      "datetime_full": "2023-07-02 17:56:25",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-040",
@@ -918,13 +996,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Canon PowerShot G7 X Mark III",
-      "lens": "8.8-36.8 mm",
+      "lens": "8.8-36.8mm",
       "focal": "36.8mm",
       "aperture": "f/2.8",
       "shutter": "1/500",
       "iso": 160,
       "date": "2023-06-22",
-      "date_display": "June 22, 2023"
+      "date_display": "June 22, 2023",
+      "datetime_full": "2023-06-22 08:47:17",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "nature-041",
@@ -947,7 +1027,9 @@
       "shutter": "1/200",
       "iso": 1600,
       "date": "2024-12-26",
-      "date_display": "December 26, 2024"
+      "date_display": "December 26, 2024",
+      "datetime_full": "2024-12-26 15:19:33",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "nature-042",
@@ -964,13 +1046,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "200mm",
       "aperture": "f/5.6",
       "shutter": "1/1600",
       "iso": 200,
       "date": "2023-06-30",
-      "date_display": "June 30, 2023"
+      "date_display": "June 30, 2023",
+      "datetime_full": "2023-06-30 12:15:52",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-001",
@@ -987,13 +1071,15 @@
       "height": 1235,
       "aspect": 1.6194,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/800",
       "iso": 100,
       "date": "2023-12-24",
-      "date_display": "December 24, 2023"
+      "date_display": "December 24, 2023",
+      "datetime_full": "2023-12-24 16:42:31",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-002",
@@ -1010,13 +1096,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/1250",
       "iso": 100,
       "date": "2023-12-24",
-      "date_display": "December 24, 2023"
+      "date_display": "December 24, 2023",
+      "datetime_full": "2023-12-24 09:26:30",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-003",
@@ -1033,13 +1121,15 @@
       "height": 2000,
       "aspect": 0.667,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "55mm",
       "aperture": "f/4",
       "shutter": "1/1250",
       "iso": 200,
       "date": "2022-04-10",
-      "date_display": "April 10, 2022"
+      "date_display": "April 10, 2022",
+      "datetime_full": "2022-04-10 13:25:26",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "city-004",
@@ -1056,13 +1146,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/100",
       "iso": 100,
       "date": "2025-03-26",
-      "date_display": "March 26, 2025"
+      "date_display": "March 26, 2025",
+      "datetime_full": "2025-03-26 14:11:21",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "city-005",
@@ -1079,13 +1171,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "30mm",
       "aperture": "f/4.2",
       "shutter": "1/200",
       "iso": 100,
       "date": "2025-03-24",
-      "date_display": "March 24, 2025"
+      "date_display": "March 24, 2025",
+      "datetime_full": "2025-03-24 17:21:43",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "city-006",
@@ -1102,13 +1196,15 @@
       "height": 1129,
       "aspect": 1.7715,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "200mm",
       "aperture": "f/5.6",
       "shutter": "1/1000",
       "iso": 200,
       "date": "2022-04-10",
-      "date_display": "April 10, 2022"
+      "date_display": "April 10, 2022",
+      "datetime_full": "2022-04-10 13:11:37",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "city-007",
@@ -1125,13 +1221,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "55mm",
       "aperture": "f/4",
       "shutter": "1/800",
       "iso": 100,
       "date": "2021-07-25",
-      "date_display": "July 25, 2021"
+      "date_display": "July 25, 2021",
+      "datetime_full": "2021-07-25 12:53:44",
+      "copyright": "© 2021 Emily Cheng"
     },
     {
       "id": "city-008",
@@ -1148,13 +1246,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "55mm",
       "aperture": "f/5.6",
       "shutter": "1/1000",
       "iso": 100,
       "date": "2023-12-26",
-      "date_display": "December 26, 2023"
+      "date_display": "December 26, 2023",
+      "datetime_full": "2023-12-26 14:31:26",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-009",
@@ -1171,13 +1271,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "45mm",
       "aperture": "f/5",
       "shutter": "1/800",
       "iso": 200,
       "date": "2024-04-15",
-      "date_display": "April 15, 2024"
+      "date_display": "April 15, 2024",
+      "datetime_full": "2024-04-15 09:01:02",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "city-010",
@@ -1200,7 +1302,9 @@
       "shutter": "1/400",
       "iso": 200,
       "date": "2024-12-25",
-      "date_display": "December 25, 2024"
+      "date_display": "December 25, 2024",
+      "datetime_full": "2024-12-25 10:20:29",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "city-011",
@@ -1217,13 +1321,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/100",
       "iso": 1600,
       "date": "2024-12-30",
-      "date_display": "December 30, 2024"
+      "date_display": "December 30, 2024",
+      "datetime_full": "2024-12-30 19:54:15",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "city-012",
@@ -1240,13 +1346,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/640",
       "iso": 100,
       "date": "2023-12-24",
-      "date_display": "December 24, 2023"
+      "date_display": "December 24, 2023",
+      "datetime_full": "2023-12-24 09:32:43",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-013",
@@ -1269,7 +1377,9 @@
       "shutter": "1/160",
       "iso": 200,
       "date": "2024-12-26",
-      "date_display": "December 26, 2024"
+      "date_display": "December 26, 2024",
+      "datetime_full": "2024-12-26 09:00:55",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "city-014",
@@ -1286,13 +1396,15 @@
       "height": 1334,
       "aspect": 1.4993,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/4",
       "shutter": "1/1000",
       "iso": 100,
       "date": "2022-04-14",
-      "date_display": "April 14, 2022"
+      "date_display": "April 14, 2022",
+      "datetime_full": "2022-04-14 08:21:24",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "city-015",
@@ -1315,7 +1427,9 @@
       "shutter": "1/160",
       "iso": 200,
       "date": "2024-12-26",
-      "date_display": "December 26, 2024"
+      "date_display": "December 26, 2024",
+      "datetime_full": "2024-12-26 10:45:22",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "city-016",
@@ -1332,13 +1446,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "24mm",
       "aperture": "f/4",
       "shutter": "1/100",
       "iso": 1600,
       "date": "2023-12-24",
-      "date_display": "December 24, 2023"
+      "date_display": "December 24, 2023",
+      "datetime_full": "2023-12-24 17:58:57",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-017",
@@ -1355,13 +1471,15 @@
       "height": 2000,
       "aspect": 0.71,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "30mm",
       "aperture": "f/4.2",
       "shutter": "1/500",
       "iso": 100,
       "date": "2023-12-25",
-      "date_display": "December 25, 2023"
+      "date_display": "December 25, 2023",
+      "datetime_full": "2023-12-25 10:16:51",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-018",
@@ -1378,13 +1496,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "55mm",
       "aperture": "f/5.6",
       "shutter": "1/1000",
       "iso": 100,
       "date": "2023-12-28",
-      "date_display": "December 28, 2023"
+      "date_display": "December 28, 2023",
+      "datetime_full": "2023-12-28 13:32:13",
+      "copyright": "© 2023 Emily Cheng"
     },
     {
       "id": "city-019",
@@ -1401,13 +1521,15 @@
       "height": 2000,
       "aspect": 0.6795,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "32mm",
       "aperture": "f/4.5",
       "shutter": "1/200",
       "iso": 100,
       "date": "2024-07-13",
-      "date_display": "July 13, 2024"
+      "date_display": "July 13, 2024",
+      "datetime_full": "2024-07-13 17:46:47",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "city-020",
@@ -1424,13 +1546,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "24mm",
       "aperture": "f/4",
       "shutter": "1/160",
       "iso": 200,
       "date": "2025-03-26",
-      "date_display": "March 26, 2025"
+      "date_display": "March 26, 2025",
+      "datetime_full": "2025-03-26 19:29:32",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "city-021",
@@ -1447,13 +1571,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "55.0-200.0 mm f/4.0-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 55-200mm f/4-5.6G IF-ED",
       "focal": "135mm",
       "aperture": "f/5",
       "shutter": "1/160",
       "iso": 200,
       "date": "2025-03-26",
-      "date_display": "March 26, 2025"
+      "date_display": "March 26, 2025",
+      "datetime_full": "2025-03-26 19:13:05",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "city-022",
@@ -1470,13 +1596,15 @@
       "height": 2000,
       "aspect": 0.674,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/250",
       "iso": 100,
       "date": "2025-01-04",
-      "date_display": "January 4, 2025"
+      "date_display": "January 4, 2025",
+      "datetime_full": "2025-01-04 15:46:19",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "city-023",
@@ -1499,7 +1627,9 @@
       "shutter": "1/800",
       "iso": 100,
       "date": "2024-12-29",
-      "date_display": "December 29, 2024"
+      "date_display": "December 29, 2024",
+      "datetime_full": "2024-12-29 10:12:06",
+      "copyright": "© 2024 Emily Cheng"
     },
     {
       "id": "city-024",
@@ -1516,13 +1646,15 @@
       "height": 1334,
       "aspect": 1.4993,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/800",
       "iso": 200,
       "date": "2022-04-13",
-      "date_display": "April 13, 2022"
+      "date_display": "April 13, 2022",
+      "datetime_full": "2022-04-13 09:18:24",
+      "copyright": "© 2022 Emily Cheng"
     },
     {
       "id": "city-025",
@@ -1539,13 +1671,15 @@
       "height": 1333,
       "aspect": 1.5004,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/400",
       "iso": 100,
       "date": "2025-03-28",
-      "date_display": "March 28, 2025"
+      "date_display": "March 28, 2025",
+      "datetime_full": "2025-03-28 15:30:05",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "city-026",
@@ -1562,13 +1696,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/400",
       "iso": 100,
       "date": "2025-03-26",
-      "date_display": "March 26, 2025"
+      "date_display": "March 26, 2025",
+      "datetime_full": "2025-03-26 12:56:39",
+      "copyright": "© 2025 Emily Cheng"
     },
     {
       "id": "city-027",
@@ -1585,13 +1721,15 @@
       "height": 2000,
       "aspect": 0.6665,
       "camera": "Nikon D3300",
-      "lens": "18.0-55.0 mm f/3.5-5.6",
+      "lens": "AF-S DX VR Zoom-Nikkor 18-55mm f/3.5-5.6G II",
       "focal": "18mm",
       "aperture": "f/3.5",
       "shutter": "1/100",
       "iso": 800,
       "date": "2024-04-14",
-      "date_display": "April 14, 2024"
+      "date_display": "April 14, 2024",
+      "datetime_full": "2024-04-14 00:32:45",
+      "copyright": "© 2024 Emily Cheng"
     }
   ]
 }
