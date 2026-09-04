@@ -147,6 +147,34 @@ def format_focal(focal_length, equivalent=None):
     return actual
 
 
+def resolve_place(entry):
+    """Work out the place line shown under the title in the lightbox.
+
+    Three-tier fallback:
+      1. An explicit "place" in captions.json always wins — write anything
+         you like there, including "" to show nothing for that photo.
+      2. Otherwise use "location", which is the geocoder string.
+      3. Unless location just restates the title, in which case show nothing.
+
+    Rule 3 is the reason this function exists. "Seljalandsfoss, Iceland" as
+    both title and place says the same thing twice, but "Peyto Lake, Banff"
+    with "Peyto Lake, Banff National Park, Alberta, Canada" underneath adds
+    the park and country. Defaulting sensibly means you only hand-write the
+    ones you actually want to differ.
+    """
+    # `is not None` rather than a plain truthiness check, so an explicit ""
+    # is respected as "deliberately blank" instead of falling through.
+    if entry.get("place") is not None:
+        return entry["place"]
+
+    location = entry.get("location", "")
+    title = entry.get("title", "")
+
+    if location and location != title:
+        return location
+    return ""
+
+
 def clean_lens(raw):
     """Normalise a lens name, preferring your chosen display name.
 
@@ -330,7 +358,8 @@ def main():
                 "full": f"images/full/{filename}",
                 "thumb": f"images/thumbs/{filename}",
                 "title": entry.get("title", ""),
-                "location": entry.get("location", ""),
+                "location": entry.get("location", ""),   # geocoder input
+                "place": resolve_place(entry),            # what the panel shows
                 "notes": entry.get("notes", ""),
                 # alt text for screen readers and for when an image fails to load
                 "alt": entry.get("title") or f"Photograph, {CATEGORY_LABELS[category]}",

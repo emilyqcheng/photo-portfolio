@@ -14,7 +14,7 @@
 
 'use strict';
 
-const SLIDESHOW_MS = 4500;   // how long each photo holds during a slideshow
+const SLIDESHOW_MS = 4000;   // how long each photo holds during a slideshow
 
 
 /* --------------------------------------------------------------------------
@@ -42,7 +42,7 @@ function cacheElements() {
   els.figure = document.getElementById('lb-figure');
   els.img = document.getElementById('lb-img');
   els.title = document.getElementById('lb-title');
-  els.location = document.getElementById('lb-location');
+  els.place = document.getElementById('lb-location');
   els.date = document.getElementById('lb-date');
   els.notes = document.getElementById('lb-notes');
   els.counter = document.getElementById('lb-counter');
@@ -129,16 +129,11 @@ function render() {
 
   setText(els.title, photo.title);
 
-  // The location line is deliberately NOT shown. `location` in captions.json
-  // is geocoder input — it's verbose on purpose ("Jökulsárlón Glacier Lagoon,
-  // Iceland") so Nominatim can resolve it to coordinates. Your titles already
-  // name the place, so printing both just says the same thing twice in two
-  // slightly different ways.
-  //
-  // If you ever want a place line that ISN'T just a restatement, the right
-  // move is a separate display field in captions.json rather than reusing
-  // this one — one field, one job.
-  setText(els.location, '');
+  // `place` is the display string, separate from `location` (which is the
+  // geocoder input and deliberately verbose). build_data.py fills place in
+  // for you, blanking it where it would just restate the title — and
+  // setText hides the element entirely when handed an empty string.
+  setText(els.place, photo.place);
   setText(els.date, photo.date_display);
   setText(els.notes, photo.notes);
 
