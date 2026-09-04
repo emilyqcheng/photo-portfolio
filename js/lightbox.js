@@ -128,7 +128,10 @@ function render() {
   els.img.alt = photo.alt || '';
 
   setText(els.title, photo.title);
-  setText(els.location, photo.location);
+  // Skip the location line when it just repeats the title. For most photos
+  // the caption IS the place name, so printing both is redundant — it only
+  // differs where the title is something like "A Thousand Ripples".
+  setText(els.location, photo.location === photo.title ? '' : photo.location);
   setText(els.date, photo.date_display);
   setText(els.notes, photo.notes);
 
