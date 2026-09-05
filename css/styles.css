@@ -11,23 +11,20 @@
   --text-dim: #8c8c8c;     /* inactive nav, captions, secondary info */
 
   /* ---- Typography ----
-     Each stack names the Adobe Fonts family FIRST, then a free fallback.
-     So this works whichever route you take:
-       - Adobe Fonts web project active -> the real fonts load
-       - No kit yet                     -> Poppins / Sacramento stand in
-       - SVG wordmark                   -> the stacks stop mattering
-     If you set up a kit, copy the exact font-family value from Adobe's
-     project page — the web slug can differ from the display name. */
-  --font-display: 'sofia-pro', 'Poppins', system-ui, sans-serif;
-  --font-script: 'adobe-handwriting-ernie', 'Sacramento', cursive;
+     Each stack names the Adobe Fonts family FIRST, then a free fallback. */
+  --font-display: 'sofia-pro-variable', system-ui, sans-serif;
+  --font-script: 'adobe-handwriting-ernie', cursive;
   --font-ui: 'Inter', system-ui, sans-serif;
+
+  /* How far the wordmark sits in from the header's left padding. */
+  --wordmark-shift: 0.85rem;
 
   /* ---- Header spacing ----
      Tune these two to sit the wordmark where you want it vertically.
      Top is larger than bottom, which pushes it slightly below true centre —
      optical centring. Text sitting at exact geometric centre reads as
      slightly high, so designers nudge it down a touch. */
-  --header-pad-top: 2.55rem;
+  --header-pad-top: 2.35rem;
   --header-pad-bottom: 1.6rem;
 
   --max-width: 1680px;
@@ -84,22 +81,45 @@ img { display: block; max-width: 100%; }
   text-decoration: none;
   color: var(--text);
   line-height: 1.1;
+  margin-left: var(--wordmark-shift);
+  /* Nudged in from the header padding. Because it's a token you can tune it
+     without hunting through the file. */
 }
 
 .wordmark__name {
   display: block;
   font-family: var(--font-display);
   font-size: clamp(1.3rem, 2.6vw, 1.75rem);
-  font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  /* Uppercase letters look cramped at default spacing. Loosening the
-     tracking is what makes small caps read as deliberate. */
+
+  /* NOTE: no font-weight here on purpose.
+     Sofia Pro Variable exposes weight as a continuous AXIS, so weight is set
+     through font-variation-settings instead. Declaring both would conflict,
+     and font-variation-settings wins — leading to the confusing situation
+     where changing font-weight does nothing at all. */
+  font-variation-settings: "slnt" 0, "wght" 400;
+
+  /* A variable font's axes are numbers, so the browser can interpolate
+     between them — which means this genuinely animates rather than snapping.
+     With a traditional font family you'd only have discrete cuts (regular,
+     italic, bold) and no in-between to transition through. This is the main
+     practical reason variable fonts exist. */
+  transition: font-variation-settings 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/* Slant and thicken on hover. Also on keyboard focus, so it isn't
+   mouse-only. */
+.wordmark:hover .wordmark__name,
+.wordmark:focus-visible .wordmark__name {
+  font-variation-settings: "slnt" 10, "wght" 461.64383;
 }
 
 .wordmark__tagline {
   display: block;
   font-family: var(--font-script);
+  font-weight: 400;
+  font-style: normal;
   font-size: clamp(1.15rem, 2.3vw, 1.55rem);
   color: var(--text);
   margin-top: 0.05rem;
@@ -372,6 +392,7 @@ img { display: block; max-width: 100%; }
   color: var(--text-dim);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
+  text-align: center;
 }
 
 .site-footer p { margin: 0; }
