@@ -22,20 +22,14 @@
     </a>
 
     <nav class="filters" aria-label="Site navigation">
-      <!-- These are LINKS here, not buttons. There's no gallery on this page
-           to filter, so each one navigates back to the home page with a hash
-           — and main.js reads that hash on load and opens the matching
-           category. That's why #nature works as a destination.
-
-           A nice side effect: your category views are now shareable URLs.
-           You can send someone straight to emilyqcheng.github.io/photo-portfolio/#food -->
+      <a class="nav-link" href="index.html">All</a>
       <a class="nav-link" href="index.html#nature">Nature</a>
       <a class="nav-link" href="index.html#city">City</a>
       <a class="nav-link" href="index.html#food">Food</a>
       <a class="nav-link" href="index.html#people">People &amp; Pets</a>
-      <!-- aria-current tells assistive tech this link is the current page,
-           which is more meaningful than styling alone. -->
+      <!-- aria-current tells assistive tech this link is the current page. -->
       <a class="nav-link is-active" href="about.html" aria-current="page">About</a>
+    
     </nav>
   </header>
 
