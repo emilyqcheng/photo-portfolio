@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Emily Cheng</title>
+  <meta name="description" content="About Emily Cheng — photographer.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- The header is COPIED from index.html rather than shared.
+
+       With plain HTML there's no way to include one file inside another —
+       no templating, no components. So a multi-page static site means
+       duplicating the header, and remembering to update BOTH files when you
+       change it. That duplication is precisely the problem React and static
+       site generators exist to solve, and feeling the annoyance here is the
+       best possible motivation for learning one later.
+
+       Two pages is a fine amount of duplication. Ten would not be. -->
+  <header class="site-header">
+    <a href="index.html" class="wordmark">
+      <span class="wordmark__name">Emily Cheng</span>
+      <span class="wordmark__tagline">the world through my lens</span>
+    </a>
+
+    <nav class="filters" aria-label="Site navigation">
+      <!-- These are LINKS here, not buttons. There's no gallery on this page
+           to filter, so each one navigates back to the home page with a hash
+           — and main.js reads that hash on load and opens the matching
+           category. That's why #nature works as a destination.
+
+           A nice side effect: your category views are now shareable URLs.
+           You can send someone straight to emilyqcheng.github.io/photo-portfolio/#food -->
+      <a class="nav-link" href="index.html#nature">Nature &amp; Wildlife</a>
+      <a class="nav-link" href="index.html#city">City &amp; Culture</a>
+      <a class="nav-link" href="index.html#food">Food</a>
+      <a class="nav-link" href="index.html#people">People &amp; Pets</a>
+      <!-- aria-current tells assistive tech this link is the current page,
+           which is more meaningful than styling alone. -->
+      <a class="nav-link is-active" href="about.html" aria-current="page">About</a>
+    </nav>
+  </header>
+
+  <main class="about">
+
+    <img class="about__portrait"
+         src="images/about-portrait.jpg"
+         alt="Emily Cheng">
+
+    <div class="about__body">
+      <h1>About</h1>
+
+      <p>
+        Hello! I'm Emily, a self-taught photographer based in Chicago, Stanford, 
+        and Shanghai. I picked up photography during the pandemic, with my dog 
+        Miko as my first subject, and I've been documenting moments and memories 
+        ever since. I love carrying my camera everywhere I go and capturing 
+        authentic stories from around the world. To me, the beauty of photography 
+        lies in embracing all the imperfections and seeing life through different 
+        perspectives. My work focuses on nature, wildlife, and culture, but I'm 
+        always open to exploring new styles and subjects. I enjoy the post-production 
+        process just as much as shooting, using editing to bring my vision for each 
+        image to life. Outside photography, I enjoy running, biking, hiking (really 
+        anything outdoors), traveling, updating my beli, and cooking delicious food. 
+        Always looking for a new crazy adventure to embark on!
+      </p>
+
+      <p>
+        Contact me if you have any questions or have interest in setting up a session!
+        Email: emilyqcheng@gmail.com
+      </p>
+
+      <p>
+        Currently: Chicago, IL, USA
+        Next trip: Costa Rica - Thanksgiving 2026
+      </p>
+
+      <!-- rel="noopener" on any target="_blank" link. Without it, the page
+           you open gets a JavaScript reference back to yours via
+           window.opener and could redirect it. Modern browsers imply
+           noopener now, but stating it costs nothing and works everywhere. -->
+      <div class="about__links">
+        <a href="https://www.linkedin.com/in/emilyqcheng/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/emllycheng" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@emily-cheng" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:emilyqcheng@gmail.com">Email</a>
+      </div>
+      <!-- These URLs came from your Adobe site. Double-check the Instagram
+           handle — it reads "emllycheng" with two l's, which may be right or
+           may be a typo carried over. And a plain mailto: is easy for
+           scrapers to harvest; if that bothers you, a contact form or just
+           writing the address as text are the usual alternatives. -->
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Emily Cheng. All rights reserved. </p>
+  </footer>
+
+</body>
+</html>

@@ -10,6 +10,26 @@
   --text: #111111;
   --text-dim: #8c8c8c;     /* inactive nav, captions, secondary info */
 
+  /* ---- Typography ----
+     Each stack names the Adobe Fonts family FIRST, then a free fallback.
+     So this works whichever route you take:
+       - Adobe Fonts web project active -> the real fonts load
+       - No kit yet                     -> Poppins / Sacramento stand in
+       - SVG wordmark                   -> the stacks stop mattering
+     If you set up a kit, copy the exact font-family value from Adobe's
+     project page — the web slug can differ from the display name. */
+  --font-display: 'sofia-pro', 'Poppins', system-ui, sans-serif;
+  --font-script: 'adobe-handwriting-ernie', 'Sacramento', cursive;
+  --font-ui: 'Inter', system-ui, sans-serif;
+
+  /* ---- Header spacing ----
+     Tune these two to sit the wordmark where you want it vertically.
+     Top is larger than bottom, which pushes it slightly below true centre —
+     optical centring. Text sitting at exact geometric centre reads as
+     slightly high, so designers nudge it down a touch. */
+  --header-pad-top: 2.85rem;
+  --header-pad-bottom: 1.6rem;
+
   --max-width: 1680px;
   --gutter: 8px;           /* space between photos — tight, like your site */
   /* Near-full-bleed on phones, where every pixel of photo width counts;
@@ -30,7 +50,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-weight: 300;
   background: var(--bg);
   color: var(--text);
@@ -53,7 +73,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   justify-content: space-between;
   gap: 1rem var(--pad);
-  padding: 1.1rem var(--pad);
+  padding: var(--header-pad-top) var(--pad) var(--header-pad-bottom);
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(10px);
   /* Translucent white plus blur means photos soften as they scroll under the
@@ -68,7 +88,8 @@ img { display: block; max-width: 100%; }
 
 .wordmark__name {
   display: block;
-  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -78,10 +99,10 @@ img { display: block; max-width: 100%; }
 
 .wordmark__tagline {
   display: block;
-  font-family: 'Sacramento', cursive;   /* PLACEHOLDER — swap for your SVG */
-  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-family: var(--font-script);
+  font-size: clamp(1.15rem, 2.3vw, 1.55rem);
   color: var(--text);
-  margin-top: 0.1rem;
+  margin-top: 0.05rem;
 }
 
 
@@ -137,6 +158,45 @@ img { display: block; max-width: 100%; }
 .filter-btn.is-active {
   color: var(--text);
   font-weight: 500;
+}
+
+/* The About link is an <a>, not a button, so it needs the filter-btn look
+   applied separately. Sharing the class would be tempting, but a link and a
+   button behave differently — the link navigates, the buttons filter in
+   place — and keeping them distinct in the markup keeps that honest. */
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.nav-link:hover { color: var(--text); }
+.nav-link:hover::after,
+.nav-link.is-active::after { transform: scaleX(1); }
+.nav-link.is-active { color: var(--text); font-weight: 500; }
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
 }
 
 .filter-btn:focus-visible {
@@ -669,4 +729,83 @@ img { display: block; max-width: 100%; }
     border-top: 1px solid var(--border);
     padding: 0.6rem 0;
   }
+}
+
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+.about {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) var(--pad) 5rem;
+
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  /* 5fr / 7fr rather than 1fr / 1fr — the text column needs more room than
+     the portrait, and asymmetric proportions look more considered than a
+     dead-even split. */
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);   /* stack on narrow screens */
+  }
+}
+
+.about__portrait {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--surface);
+  /* The grey shows through while the image loads, and stands in for it
+     entirely if the file is missing — so the layout never collapses. */
+}
+
+.about__body h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+}
+
+.about__body p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin: 0 0 1.15rem;
+  max-width: 62ch;
+  /* Roughly 62 characters per line. Comfortable reading sits between 45 and
+     75 — unbounded prose across a wide monitor is genuinely tiring to
+     follow, because your eye loses its place returning to the next line. */
+}
+
+.about__body p:last-child { margin-bottom: 0; }
+
+.about__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.about__links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.about__links a:hover { color: var(--text); }
+
+.about__links a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
 }

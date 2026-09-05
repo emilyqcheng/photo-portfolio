@@ -8,7 +8,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+  <!-- Inter for UI text, plus Poppins and Sacramento as FALLBACKS for
+       Sofia Pro and Adobe Handwriting Ernie. If you set up an Adobe Fonts
+       web project, paste its <link> tag below this one — the CSS stacks name
+       the Adobe families first, so they'll take over automatically. You can
+       then drop Poppins and Sacramento from this URL to save the download. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&family=Sacramento&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -18,13 +23,13 @@
   <header class="site-header">
     <a href="index.html" class="wordmark">
       <span class="wordmark__name">Emily Cheng</span>
-      <!-- PLACEHOLDER: Sacramento, the closest free match to your Adobe Fonts
-           script. Once you export your real wordmark as SVG, replace this
-           whole <a> block with:
-             <a href="index.html" class="wordmark">
-               <img src="images/wordmark.svg" alt="Emily Cheng — the world through my lens">
-             </a> -->
       <span class="wordmark__tagline">the world through my lens</span>
+      <!-- If you export the wordmark as SVG (the route I'd recommend, since
+           it guarantees the real Sofia Pro and Ernie shapes), replace both
+           spans above with a single image:
+             <img src="images/wordmark.svg"
+                  alt="Emily Cheng — the world through my lens">
+           and delete the .wordmark__name / .wordmark__tagline CSS. -->
     </a>
 
     <nav class="filters" aria-label="Photo categories">
@@ -33,6 +38,7 @@
       <button class="filter-btn" data-category="city">City &amp; Culture</button>
       <button class="filter-btn" data-category="food">Food</button>
       <button class="filter-btn" data-category="people">People &amp; Pets</button>
+      <a class="nav-link" href="about.html">About</a>
     </nav>
   </header>
 

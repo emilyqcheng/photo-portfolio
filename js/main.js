@@ -9,7 +9,7 @@
    space than a portrait, and every photo in that row ends up the SAME HEIGHT.
    Row heights then vary from row to row depending on the mix of shapes.
 
-   Why JavaScript is needed: CSS can't do "exactly 3 per row, equal
+   Why JavaScript is needed at all: CSS can't do "exactly 3 per row, equal
    heights, filling the width," because that needs a per-row scale
    calculation. CSS wrapping is greedy — it fits whatever it can. Chunking
    the array first is what gives us control over the count.
@@ -232,10 +232,45 @@ function layout() {
 
 
 /* --------------------------------------------------------------------------
+   URL <-> CATEGORY
+   The active category lives in the URL hash, which buys three things:
+     - about.html can link straight to a category (index.html#food)
+     - category views become shareable, bookmarkable URLs
+     - the browser back button works as people expect
+   -------------------------------------------------------------------------- */
+function categoryFromHash() {
+  // .slice(1) strips the leading '#'
+  const hash = window.location.hash.slice(1);
+
+  // Only accept a category we actually have. Never trust a URL — anyone can
+  // type anything after the #, and an unvalidated value would silently
+  // filter the gallery down to nothing with no explanation.
+  const valid = els.filters ? [...els.filters].map((b) => b.dataset.category) : [];
+  return valid.includes(hash) ? hash : 'all';
+}
+
+function syncHash(category) {
+  // 'all' is the default, so it gets a bare URL rather than an ugly '#all'.
+  const hash = category === 'all' ? ' ' : `#${category}`;
+
+  // replaceState instead of pushState: clicking through five filters
+  // shouldn't mean five presses of Back to leave the page. It rewrites the
+  // current history entry rather than adding one.
+  //
+  // Assigning location.hash directly would also work, but it makes the
+  // browser jump to any element with that id — and #food would scroll you
+  // somewhere unexpected.
+  history.replaceState(null, '', hash === ' ' ? window.location.pathname : hash);
+}
+
+
+/* --------------------------------------------------------------------------
    FILTERING
    -------------------------------------------------------------------------- */
-function applyFilter(category) {
+function applyFilter(category, { updateHash = true } = {}) {
   state.category = category;
+
+  if (updateHash) syncHash(category);
 
   els.filters.forEach((btn) => {
     btn.classList.toggle('is-active', btn.dataset.category === category);
@@ -254,6 +289,13 @@ function applyFilter(category) {
 function wireFilters() {
   els.filters.forEach((btn) => {
     btn.addEventListener('click', () => applyFilter(btn.dataset.category));
+  });
+
+  // Fires when the hash changes without a page load — which is exactly what
+  // the Back and Forward buttons do here. updateHash: false because the URL
+  // has ALREADY changed; rewriting it would fight the browser.
+  window.addEventListener('hashchange', () => {
+    applyFilter(categoryFromHash(), { updateHash: false });
   });
 }
 
@@ -365,7 +407,10 @@ async function init() {
     wireFilters();
     wireResize();
     initLightbox();   // attaches the viewer's listeners, once
-    layout();
+
+    // Open on whatever category the URL asks for, defaulting to 'all'.
+    // applyFilter calls layout() itself, so no separate render needed.
+    applyFilter(categoryFromHash(), { updateHash: false });
 
     console.log(`Loaded ${state.photos.length} photographs, ${state.perRow} per row.`);
   } catch (error) {
