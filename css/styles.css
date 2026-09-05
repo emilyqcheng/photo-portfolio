@@ -16,9 +16,6 @@
   --font-script: 'adobe-handwriting-ernie', cursive;
   --font-ui: 'Inter', system-ui, sans-serif;
 
-  /* How far the wordmark sits in from the header's left padding. */
-  --wordmark-shift: 0.85rem;
-
   /* ---- Header spacing ----
      Tune these two to sit the wordmark where you want it vertically.
      Top is larger than bottom, which pushes it slightly below true centre —
@@ -36,7 +33,7 @@
   /* Lightbox backdrop. Raise the alpha toward 1 for a more solid white;
      lower it to let more of the gallery show through behind the blur.
      0.985 is nearly opaque with just a hint of the page beneath. */
-  --lb-backdrop: rgba(250, 250, 249, 0.985);
+  --lb-backdrop: rgba(250, 250, 249, 0.9);
 }
 
 
@@ -120,7 +117,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-script);
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-size: clamp(1rem, 1.9vw, 1.35rem);
   color: var(--text);
   margin-top: 0.1rem;
 }
