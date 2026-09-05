@@ -24,8 +24,8 @@
      Top is larger than bottom, which pushes it slightly below true centre —
      optical centring. Text sitting at exact geometric centre reads as
      slightly high, so designers nudge it down a touch. */
-  --header-pad-top: 2.35rem;
-  --header-pad-bottom: 1.6rem;
+  --header-pad-top: 2rem;
+  --header-pad-bottom: 1.35rem;
 
   --max-width: 1680px;
   --gutter: 8px;           /* space between photos — tight, like your site */
@@ -89,7 +89,7 @@ img { display: block; max-width: 100%; }
 .wordmark__name {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  font-size: clamp(1.15rem, 2.3vw, 1.55rem);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 
@@ -120,9 +120,9 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-script);
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(1.15rem, 2.3vw, 1.55rem);
+  font-size: clamp(1rem, 2vw, 1.35rem);
   color: var(--text);
-  margin-top: 0.05rem;
+  margin-top: 0.1rem;
 }
 
 
