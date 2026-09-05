@@ -21,8 +21,8 @@
      Top is larger than bottom, which pushes it slightly below true centre —
      optical centring. Text sitting at exact geometric centre reads as
      slightly high, so designers nudge it down a touch. */
-  --header-pad-top: 2rem;
-  --header-pad-bottom: 1.35rem;
+  --header-pad-top: 1.6rem;
+  --header-pad-bottom: 1.1rem;
 
   --max-width: 1680px;
   --gutter: 8px;           /* space between photos — tight, like your site */
