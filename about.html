@@ -15,16 +15,6 @@
 
 <body>
 
-  <!-- The header is COPIED from index.html rather than shared.
-
-       With plain HTML there's no way to include one file inside another —
-       no templating, no components. So a multi-page static site means
-       duplicating the header, and remembering to update BOTH files when you
-       change it. That duplication is precisely the problem React and static
-       site generators exist to solve, and feeling the annoyance here is the
-       best possible motivation for learning one later.
-
-       Two pages is a fine amount of duplication. Ten would not be. -->
   <header class="site-header">
     <a href="index.html" class="wordmark">
       <span class="wordmark__name">Emily Cheng</span>
@@ -56,32 +46,43 @@
          alt="Emily Cheng">
 
     <div class="about__body">
-      <h1>About</h1>
+      <h1>About Me</h1>
 
       <p>
-        Hello! I'm Emily, a self-taught photographer based in Chicago, Stanford, 
-        and Shanghai. I picked up photography during the pandemic, with my dog 
-        Miko as my first subject, and I've been documenting moments and memories 
-        ever since. I love carrying my camera everywhere I go and capturing 
-        authentic stories from around the world. To me, the beauty of photography 
-        lies in embracing all the imperfections and seeing life through different 
-        perspectives. My work focuses on nature, wildlife, and culture, but I'm 
-        always open to exploring new styles and subjects. I enjoy the post-production 
-        process just as much as shooting, using editing to bring my vision for each 
-        image to life. Outside photography, I enjoy running, biking, hiking (really 
-        anything outdoors), traveling, updating my beli, and cooking delicious food. 
+        Hello! I'm Emily, a self-taught photographer based in Chicago,
+        Stanford, and Shanghai. I picked up photography during the pandemic,
+        with my dog Miko as my first subject, and I've been documenting
+        my life ever since.
+      </p>
+
+      <p>
+        I love carrying my camera everywhere I go and capturing authentic
+        stories from around the world. To me, the beauty of photography lies
+        in embracing all the imperfections and seeing life through different
+        perspectives. My work focuses on nature, wildlife, and culture, but
+        I'm always open to exploring new styles and subjects. I enjoy the
+        post-production process just as much as shooting, using editing to
+        bring my vision for each image to life. 
+      </p>
+
+      <p>
+        Outside photography, I enjoy running, biking, hiking (really anything
+        outdoors), traveling, updating my Beli, and cooking delicious food.
         Always looking for a new crazy adventure to embark on!
       </p>
 
       <p>
-        Contact me if you have any questions or have interest in setting up a session!
-        Email: emilyqcheng@gmail.com
+        Contact me if you have any questions or if you're interested in setting 
+        up a session.
       </p>
 
-      <p>
-        Currently: Chicago, IL, USA
-        Next trip: Costa Rica - Thanksgiving 2026
-      </p>
+      <dl class="about__meta">
+        <dt>Currently</dt>
+        <dd>Chicago, IL, USA</dd>
+
+        <dt>Next trip</dt>
+        <dd>Costa Rica!</dd>
+      </dl>
 
       <!-- rel="noopener" on any target="_blank" link. Without it, the page
            you open gets a JavaScript reference back to yours via

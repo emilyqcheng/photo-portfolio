@@ -27,7 +27,7 @@
      Top is larger than bottom, which pushes it slightly below true centre —
      optical centring. Text sitting at exact geometric centre reads as
      slightly high, so designers nudge it down a touch. */
-  --header-pad-top: 2.85rem;
+  --header-pad-top: 2.55rem;
   --header-pad-bottom: 1.6rem;
 
   --max-width: 1680px;
@@ -808,4 +808,24 @@ img { display: block; max-width: 100%; }
 .about__links a:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 4px;
+}
+
+/* Currently / Next trip block on the About page. Two-column grid so the
+   labels align — same pattern as the lightbox camera details. */
+.about__meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 1.5rem;
+  margin: 2.25rem 0 0;
+  font-size: 0.78rem;
+}
+
+.about__meta dt {
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about__meta dd {
+  margin: 0;
 }
