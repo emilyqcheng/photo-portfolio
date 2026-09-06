@@ -3,11 +3,12 @@
 build_data.py — generates data/photos.json for the portfolio site.
 
 WHAT IT DOES
-    Reads two sources and merges them:
-      1. images/full/*.jpg  -> camera settings + dimensions, read from EXIF
-      2. data/captions.json -> titles, locations, notes, and display order (yours)
+    Reads three sources and merges them:
+      1. images/full/*.jpg   -> camera settings + dimensions, read from EXIF
+      2. data/captions.json  -> titles, places, notes, and display order (yours)
+      3. data/locations.json -> coordinates, written by geocode.py
     Writes:
-      3. data/photos.json   -> the single file the website fetches
+      4. data/photos.json    -> the single file the website fetches
 
 WHY IT'S SPLIT THIS WAY
     Machine-readable facts (aperture, ISO, pixel dimensions) should never be
@@ -51,6 +52,7 @@ ROOT = Path(__file__).parent
 FULL_DIR = ROOT / "images" / "full"
 THUMB_DIR = ROOT / "images" / "thumbs"
 CAPTIONS_FILE = ROOT / "data" / "captions.json"
+LOCATIONS_FILE = ROOT / "data" / "locations.json"   # written by geocode.py
 OUTPUT_FILE = ROOT / "data" / "photos.json"
 
 # Used to build the copyright line. Change this and every photo updates.
@@ -309,7 +311,17 @@ def main():
     with open(CAPTIONS_FILE, encoding="utf-8") as f:
         captions = json.load(f)
 
+    # Coordinates are optional. If you haven't run geocode.py yet, the site
+    # still builds — photos just won't have lat/lng, and the map will show
+    # nothing. Making this optional rather than required means the two
+    # scripts don't have to be run in lockstep.
+    coords = {}
+    if LOCATIONS_FILE.exists():
+        with open(LOCATIONS_FILE, encoding="utf-8") as f:
+            coords = json.load(f)
+
     photos = []
+    no_coords = []     # locations named in captions.json but missing from locations.json
     lens_values = {}   # raw EXIF lens string -> how many photos use it
     problems = {"no_full": [], "no_thumb": [], "no_title": [], "no_location": []}
 
@@ -342,6 +354,16 @@ def main():
             if not entry.get("location"):
                 problems["no_location"].append(filename)
 
+            # Look up this photo's coordinates by its location string. The
+            # SAME place name resolves to the same coordinates for every
+            # photo taken there — which is exactly what we want, since it
+            # means five Jökulsárlón photos share one map pin instead of
+            # stacking five markers on the same spot.
+            location = entry.get("location", "").strip()
+            coord = coords.get(location) if location else None
+            if location and not coord:
+                no_coords.append(location)
+
             exif = read_exif(full_path)
             # Pop the raw lens off so it doesn't ship in the public JSON —
             # it's a diagnostic for the report, not site content.
@@ -360,6 +382,10 @@ def main():
                 "title": entry.get("title", ""),
                 "location": entry.get("location", ""),   # geocoder input
                 "place": resolve_place(entry),            # what the panel shows
+                # lat/lng are None when there's no location or no lookup yet.
+                # The map JS skips those; the gallery doesn't care either way.
+                "lat": coord["lat"] if coord else None,
+                "lng": coord["lng"] if coord else None,
                 "notes": entry.get("notes", ""),
                 # alt text for screen readers and for when an image fails to load
                 "alt": entry.get("title") or f"Photograph, {CATEGORY_LABELS[category]}",
@@ -409,6 +435,7 @@ def main():
     report("no_thumb", "Missing a thumbnail (full exists, thumb doesn't)")
     report("no_title", "No title yet")
     report("no_location", "No location — these won't get a map pin")
+    report(sorted(set(no_coords)), "Location set but not geocoded yet — run geocode.py")
     report(orphans, "Exported but not in captions.json (typo?)")
 
     missing_exif = [p["id"] for p in photos if not p["camera"]]
@@ -424,6 +451,10 @@ def main():
             shown = mapped if mapped else clean_lens(raw) + "   (auto-tidied)"
             print(f"    {lens_values[raw]:>3}x  {raw}")
             print(f"          -> {shown}")
+
+    pinned = {p["location"] for p in photos if p["lat"] is not None}
+    on_map = sum(1 for p in photos if p["lat"] is not None)
+    print(f"\n  Map: {on_map} photos across {len(pinned)} pins")
 
     print()
 
