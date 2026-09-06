@@ -22,9 +22,9 @@
     { "file": "nature-008.jpg", "title": "Jökulsárlón, Iceland", "location": "Jökulsárlón Glacier Lagoon, Iceland", "notes": "" },
     { "file": "nature-009.jpg", "title": "Vestrahorn, Iceland", "location": "Vestrahorn, Iceland", "notes": "" },
     { "file": "nature-010.jpg", "title": "Jökulsárlón, Iceland", "location": "Jökulsárlón Glacier Lagoon, Iceland", "notes": "" },
-    { "file": "nature-011.jpg", "title": "Icelandic Sheep", "location": "", "notes": "" },
+    { "file": "nature-011.jpg", "title": "Icelandic Sheep", "location": "Iceland", "notes": "" },
     { "file": "nature-012.jpg", "title": "Yoda Cave, Iceland", "location": "Hjörleifshöfði, Iceland", "notes": "" },
-    { "file": "nature-013.jpg", "title": "Swan Lake", "location": "", "notes": "" },
+    { "file": "nature-013.jpg", "title": "Swan Lake", "location": "Álftafjörður, Iceland", "notes": "" },
     { "file": "nature-014.jpg", "title": "Brunnhóll, Iceland", "location": "Brunnhóll, Iceland", "notes": "" },
     { "file": "nature-015.jpg", "title": "Stjórnarfoss, Iceland", "location": "Stjórnarfoss, Iceland", "notes": "" },
     { "file": "nature-016.jpg", "title": "Rjúkandafoss, Iceland", "location": "Rjúkandafoss, Iceland", "notes": "" },
@@ -58,7 +58,7 @@
 
   "city": [
     { "file": "city-001.jpg", "title": "The Blue City – Chefchaouen, Morocco", "location": "Chefchaouen, Morocco", "notes": "" },
-    { "file": "city-002.jpg", "title": "Casablanca, Morocco", "location": "Casablanca, Morocco", "notes": "" },
+    { "file": "city-002.jpg", "title": "Hassan II Mosque, Casablanca", "location": "Hassan II Mosque, Casablanca, Morocco", "notes": "" },
     { "file": "city-003.jpg", "title": "Qorikancha, Cusco", "location": "Qorikancha, Cusco, Peru", "notes": "" },
     { "file": "city-004.jpg", "title": "The Alhambra, Granada", "location": "Alhambra, Granada, Spain", "notes": "" },
     { "file": "city-005.jpg", "title": "Sagrada Família, Barcelona", "location": "Sagrada Família, Barcelona, Spain", "notes": "" },
@@ -83,7 +83,10 @@
     { "file": "city-024.jpg", "title": "Phuyupatamarka, Inca Trail", "location": "Phuyupatamarca, Cusco Region, Peru", "notes": "" },
     { "file": "city-025.jpg", "title": "Seville, Spain", "location": "Seville, Spain", "notes": "" },
     { "file": "city-026.jpg", "title": "The Alhambra, Granada", "location": "Alhambra, Granada, Spain", "notes": "" },
-    { "file": "city-027.jpg", "title": "Massachusetts State House", "location": "Massachusetts State House, Boston, Massachusetts", "notes": "" }
+    { "file": "city-027.jpg", "title": "Massachusetts State House", "location": "Massachusetts State House, Boston, Massachusetts", "notes": "" },
+    { "file": "city-028.jpg", "title": "Hassan II Mosque, Casablanca", "location": "Hassan II Mosque, Casablanca, Morocco", "notes": "" },
+    { "file": "city-029.jpg", "title": "Casa Milà, Barcelona", "location": "Casa Milà, Barcelona, Spain", "notes": "" },
+    { "file": "city-030.jpg", "title": "Golden Gate Bridge, SF", "location": "Golden Gate Bridge, San Francisco, California", "notes": "" }
   ],
 
   "food": [
