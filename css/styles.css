@@ -901,7 +901,7 @@ img { display: block; max-width: 100%; }
 .map-section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3rem) var(--pad) 4rem;
+  padding: clamp(0.75rem, 2vw, 1.5rem) var(--pad) 4rem;
 }
 
 .map-title {
