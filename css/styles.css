@@ -26,8 +26,7 @@
 
   --max-width: 1680px;
   --gutter: 8px;           /* space between photos — tight, like your site */
-  /* Near-full-bleed on phones, where every pixel of photo width counts;
-     roomier margins on desktop where there's space to spare. */
+  --radius: 3px;
   --pad: clamp(var(--gutter), 3vw, 2.5rem);
 
   /* Lightbox backdrop. Raise the alpha toward 1 for a more solid white;
@@ -846,4 +845,197 @@ img { display: block; max-width: 100%; }
 
 .about__meta dd {
   margin: 0;
+}
+
+
+/* ============================================================
+   MAP PAGE
+   ============================================================ */
+.map-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) var(--pad) 4rem;
+}
+
+.map-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+}
+
+.map-intro {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  max-width: 52ch;
+  margin: 0 0 1.75rem;
+}
+
+.map-panel {
+  height: clamp(420px, 72dvh, 900px);
+  /* An EXPLICIT height, and it matters more here than anywhere else:
+     Leaflet measures its container when it initialises, and a container
+     with no height renders as a blank grey box. Same definite-height
+     lesson as the lightbox portraits.
+
+     dvh, not vh — "dynamic viewport height" accounts for mobile browser
+     chrome appearing and disappearing as you scroll. Plain vh measures the
+     largest possible viewport, so a 72vh map on a phone ends up partly
+     hidden behind the address bar. */
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  /* Clips the tiles to the rounded corners — without it the square tile
+     grid pokes out past the border radius. */
+  background: var(--surface);
+  z-index: 0;
+  /* Leaflet assigns z-indexes up into the 600s internally. Establishing a
+     stacking context here keeps all of that BELOW the sticky header (z 20)
+     and the lightbox (z 100), which otherwise get covered by map panes. */
+}
+
+
+/* ---------- Pins ---------- */
+/* .pin-wrap is Leaflet's divIcon container; .pin is our own span inside it.
+   Leaflet controls the wrapper's position, so all styling goes on the span —
+   fighting Leaflet for control of the wrapper is a losing battle. */
+.pin-wrap { background: none; border: 0; }
+
+.pin {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--text);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.pin-wrap:hover .pin {
+  transform: scale(1.6);
+  /* Grows on hover so a 12px dot is still easy to target, and gives you
+     feedback about which one you're on when pins overlap. */
+}
+
+
+/* ---------- Cluster bubbles ---------- */
+/* Shown when zoomed out; the number is total PHOTOGRAPHS in the cluster,
+   not how many pins it merged. */
+.cluster-wrap { background: none; border: 0; }
+
+.cluster {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid var(--text);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  /* Tabular figures are all one width, so a bubble doesn't shift its
+     contents as the number changes while you zoom. */
+
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1),
+              background-color 0.2s ease;
+}
+
+.cluster-wrap:hover .cluster {
+  transform: scale(1.1);
+  background: var(--text);
+  color: var(--bg);
+}
+
+
+/* Desaturate the basemap so your photographs carry all the colour. This
+   targets only the TILE pane, so pins, clusters, and popups keep their real
+   colours. Filtering the pane rather than individual tiles also avoids
+   visible seams at tile boundaries. */
+.leaflet-tile-pane {
+  filter: grayscale(1) brightness(1.05) contrast(0.9);
+}
+
+/* ---------- Pin popup ---------- */
+.pin-popup { width: 186px; }
+
+.pin-popup__thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.pin-popup__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.pin-popup__thumb:hover img { transform: scale(1.06); }
+
+.pin-popup__thumb:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.pin-popup__label {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  margin: 0.6rem 0 0;
+}
+
+.pin-popup__meta {
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0.2rem 0 0;
+}
+
+/* Leaflet ships its own popup chrome. These overrides make it match the rest
+   of the site rather than looking like a default map tooltip. */
+.leaflet-popup-content-wrapper {
+  border-radius: 3px;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.16);
+  padding: 10px;
+}
+
+.leaflet-popup-content { margin: 0; }
+
+.leaflet-container {
+  font-family: var(--font-ui);
+  background: var(--surface);
+}
+
+.leaflet-container a { color: var(--text); }
+
+/* Attribution must stay visible — it's a licence condition for both
+   OpenStreetMap data and CARTO tiles. Toned down, never hidden. */
+.leaflet-control-attribution {
+  font-size: 0.6rem;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+/* Desaturate the basemap so your photographs carry all the colour. This
+   filters only the TILE pane, not the marker or popup panes, so pins and
+   previews keep their real colours. Applying it to the pane rather than
+   individual tiles also avoids visible seams at tile boundaries. */
+.leaflet-tile-pane {
+  filter: grayscale(1) brightness(1.05) contrast(0.9);
 }

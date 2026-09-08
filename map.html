@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map | Emily Cheng</title>
+  <meta name="description" content="A map of where Emily Cheng's photographs were taken.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/ufe8sdj.css">
+
+  <!-- Leaflet's own stylesheet. It MUST load before the map initialises —
+       without it you get tiles stacked in a broken column instead of a map,
+       because Leaflet positions every tile with CSS transforms. -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="">
+  <!-- The integrity hash is SUBRESOURCE INTEGRITY. The browser hashes the
+       downloaded file and refuses to run it unless the hash matches. That
+       means a compromised CDN can't silently serve you altered code — worth
+       doing for any third-party script you load. -->
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="wordmark">
+      <span class="wordmark__name">Emily Cheng</span>
+      <span class="wordmark__tagline">the world through my lens</span>
+    </a>
+
+    <nav class="filters" aria-label="Site navigation">
+      <a class="nav-link" href="index.html">All</a>
+      <a class="nav-link" href="index.html#nature">Nature</a>
+      <a class="nav-link" href="index.html#city">City</a>
+      <a class="nav-link" href="index.html#food">Food</a>
+      <a class="nav-link" href="index.html#people">People &amp; Pets</a>
+      <a class="nav-link is-active" href="map.html" aria-current="page">Map</a>
+      <a class="nav-link" href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="map-section">
+      <h1 class="map-title">Where these were taken</h1>
+      <p class="map-intro">
+        Every pin is a place; the number is how many photographs were made
+        there. Click a pin to see them.
+      </p>
+
+      <!-- Leaflet takes this element over completely. It needs an explicit
+           height in CSS BEFORE initialising — a container with no height
+           renders as a blank grey box, which is the classic Leaflet bug. -->
+      <div class="map-panel" id="map"></div>
+
+      <p class="gallery-status" id="map-status">Loading map…</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Emily Cheng. All rights reserved.</p>
+  </footer>
+
+  <!-- ======================================================================
+       LIGHTBOX
+       Sits in the HTML from page load, hidden. Building it here rather than
+       generating it in JavaScript means you can restyle it, or inspect it in
+       DevTools, without reading any code.
+
+       role="dialog" + aria-modal tell assistive tech this is a modal layer:
+       a screen reader will confine itself to this content while it's open,
+       which pairs with the focus trap in lightbox.js.
+       ====================================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"
+       aria-label="Photo viewer" hidden>
+
+    <!-- CONTROL RAIL — left edge on desktop, bottom bar on mobile.
+         aria-pressed marks a toggle button's on/off state, which is different
+         from a plain button. Screen readers announce "pressed" or "not
+         pressed" so the state is actually perceivable. -->
+    <div class="lb-rail">
+      <button class="lb-btn" id="lb-fullscreen" type="button" aria-label="Toggle fullscreen">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>
+        </svg>
+      </button>
+
+      <button class="lb-btn" id="lb-slideshow" type="button"
+              aria-label="Play slideshow" aria-pressed="false">
+        <!-- Both icons are always present; CSS shows one and hides the other
+             based on the .is-playing class. Swapping visibility is simpler
+             and less error-prone than rewriting the SVG in JavaScript. -->
+        <svg class="lb-icon-play" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 4l13 8-13 8V4z" fill="currentColor" stroke="none"/>
+        </svg>
+        <svg class="lb-icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 4h4v16H7zM13 4h4v16h-4z" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+
+      <button class="lb-btn" id="lb-toggle-details" type="button"
+              aria-label="Show camera details" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 10.5v6M12 7.6v.6"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="lb-close" id="lb-close" type="button" aria-label="Close viewer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+    </button>
+
+    <!-- STAGE: the photo, with an arrow on each side -->
+    <div class="lb-stage">
+      <button class="lb-arrow lb-arrow--prev" id="lb-prev" type="button"
+              aria-label="Previous photograph">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+
+      <figure class="lb-figure" id="lb-figure">
+        <img id="lb-img" alt="">
+      </figure>
+
+      <button class="lb-arrow lb-arrow--next" id="lb-next" type="button"
+              aria-label="Next photograph">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- INFO PANEL: right side on desktop, below the photo on mobile -->
+    <aside class="lb-info">
+      <p class="lb-counter" id="lb-counter"></p>
+      <h2 class="lb-title" id="lb-title"></h2>
+      <p class="lb-location" id="lb-location"></p>
+      <p class="lb-date" id="lb-date"></p>
+      <p class="lb-notes" id="lb-notes"></p>
+
+      <!-- Filled by renderDetails() in lightbox.js, toggled by the ⓘ button -->
+      <div class="lb-details" id="lb-details" hidden></div>
+    </aside>
+
+  </div>
+
+
+  <!-- type="module" enables `import` / `export`, which is how main.js pulls in
+       lightbox.js. Modules are deferred automatically, so they always run
+       after the HTML is parsed — no need to sit at the bottom of the body,
+       though leaving them here does no harm.
+
+       One consequence worth knowing: modules are subject to CORS, so they do
+       NOT work over file://. You already need a local server for fetch(),
+       so nothing changes in practice. -->
+  <!-- Leaflet as a plain script, NOT a module. Plain scripts execute before
+       deferred modules, so window.L is guaranteed to exist by the time
+       map.js runs — which is why map.js has no import for it. -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+
+  <script type="module" src="js/map.js"></script>
+</body>
+</html>
