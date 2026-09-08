@@ -562,16 +562,6 @@ img { display: block; max-width: 100%; }
   min-height: 0;
   overflow: hidden;
 }
-  .lb-stage {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr);
-    gap: 0;
-    padding: 3.25rem 0.75rem 0.75rem;
-    /* Collapse to a single track. The arrows are absolutely positioned on
-       mobile, so they don't need columns of their own — and removing the
-       extra tracks removes every possible source of horizontal asymmetry
-       rather than trying to balance it. */
-  }
 
 .lb-arrow {
   width: 46px;
