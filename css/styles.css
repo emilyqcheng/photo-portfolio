@@ -562,6 +562,16 @@ img { display: block; max-width: 100%; }
   min-height: 0;
   overflow: hidden;
 }
+  .lb-stage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 0;
+    padding: 3.25rem 0.75rem 0.75rem;
+    /* Collapse to a single track. The arrows are absolutely positioned on
+       mobile, so they don't need columns of their own — and removing the
+       extra tracks removes every possible source of horizontal asymmetry
+       rather than trying to balance it. */
+  }
 
 .lb-arrow {
   width: 46px;
@@ -707,18 +717,42 @@ img { display: block; max-width: 100%; }
 /* ---------- Mobile ---------- */
 @media (max-width: 860px) {
   .lightbox {
-    /* Stack vertically: photo, then info, then the rail as a bottom bar. */
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) auto auto;
+
+    height: 100dvh;
+    /* dvh = dynamic viewport height. On iOS Safari, `inset: 0` resolves
+       against the LARGEST viewport, so the bottom of a fixed element can sit
+       underneath the browser toolbar. dvh tracks the actually-visible height,
+       which is what keeps the control rail reachable. */
   }
+
+  /* EXPLICIT row assignment. Auto-placement follows source order, and the
+     markup has the rail first (correct for the desktop three-column layout).
+     In one column that put the rail in row 1 — the tall track — and pushed
+     the photo into an auto-sized row, which is what broke both the portrait
+     overflow and the landscape centring.
+
+     Assigning rows by hand decouples visual order from source order, so each
+     layout gets the arrangement it needs from the same HTML. */
+  .lb-stage { grid-row: 1; }
+  .lb-info  { grid-row: 2; }
+  .lb-rail  { grid-row: 3; }
 
   .lb-stage {
-    padding: 3.5rem 0.5rem 0.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 0;
+    padding: 3.25rem 0.75rem 0.75rem;
+    /* Collapse to a single track. The arrows are absolutely positioned on
+       mobile, so they don't need columns of their own — and removing the
+       extra tracks removes every possible source of horizontal asymmetry
+       rather than trying to balance it. */
   }
-
+  
   .lb-arrow {
     /* Float the arrows over the photo edges — on a narrow screen, giving
-       them their own columns would steal width the photo needs. */
+       them their own grid columns would steal width the photo needs. */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -733,7 +767,8 @@ img { display: block; max-width: 100%; }
     border-left: 0;
     border-top: 1px solid var(--border);
     padding: 1rem 1.25rem;
-    max-height: 34vh;
+    max-height: 32dvh;
+    overflow-y: auto;
   }
 
   .lb-counter { margin-bottom: 0.6rem; }
@@ -741,10 +776,22 @@ img { display: block; max-width: 100%; }
   .lb-rail {
     flex-direction: row;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     border-right: 0;
     border-top: 1px solid var(--border);
-    padding: 0.6rem 0;
+    padding: 0.6rem 0 max(0.6rem, env(safe-area-inset-bottom));
+    /* env(safe-area-inset-bottom) is the height of the home-indicator area
+       on notched iPhones. max() means it has no effect on devices without
+       one, so a single rule covers both. Without it the rail sits under
+       the indicator and gets hard to tap. */
+  }
+
+  .lb-btn {
+    width: 44px;
+    height: 44px;
+    /* 44px is Apple's minimum recommended touch target. The 38px desktop
+       size is fine for a mouse but genuinely fiddly with a thumb — which
+       is part of why those buttons felt unresponsive. */
   }
 }
 
@@ -919,50 +966,6 @@ img { display: block; max-width: 100%; }
   transform: scale(1.6);
   /* Grows on hover so a 12px dot is still easy to target, and gives you
      feedback about which one you're on when pins overlap. */
-}
-
-
-/* ---------- Cluster bubbles ---------- */
-/* Shown when zoomed out; the number is total PHOTOGRAPHS in the cluster,
-   not how many pins it merged. */
-.cluster-wrap { background: none; border: 0; }
-
-.cluster {
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.95);
-  border: 1.5px solid var(--text);
-  color: var(--text);
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  /* Tabular figures are all one width, so a bubble doesn't shift its
-     contents as the number changes while you zoom. */
-
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
-  cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1),
-              background-color 0.2s ease;
-}
-
-.cluster-wrap:hover .cluster {
-  transform: scale(1.1);
-  background: var(--text);
-  color: var(--bg);
-}
-
-
-/* Desaturate the basemap so your photographs carry all the colour. This
-   targets only the TILE pane, so pins, clusters, and popups keep their real
-   colours. Filtering the pane rather than individual tiles also avoids
-   visible seams at tile boundaries. */
-.leaflet-tile-pane {
-  filter: grayscale(1) brightness(1.05) contrast(0.9);
 }
 
 /* ---------- Pin popup ---------- */
