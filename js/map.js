@@ -136,7 +136,7 @@ function createPopup(group) {
    SETUP
    -------------------------------------------------------------------------- */
 function buildMap(groups) {
-  const map = L.map(els.map, {
+    const map = L.map(els.map, {
     // Leaflet measures its container on initialisation and renders a blank
     // grey box if that container has no height — the single most common
     // Leaflet problem, and the same definite-height lesson as the lightbox
@@ -145,9 +145,17 @@ function buildMap(groups) {
     // Wheel-zoom off by default: with a full-width map, scrolling the page
     // would hijack into zooming the map and trap the reader. Ctrl+scroll
     // still zooms, and Leaflet shows a hint saying so.
-    worldCopyJump: true,
-    // Your pins span Iceland to Botswana to Shanghai. This makes markers
-    // reappear sensibly when panning across the antimeridian.
+
+    minZoom: 2,
+    // Stops the map zooming out far enough to show more than one copy of the
+    // world — that's what produced the repeated continents.
+
+    maxBounds: [[-85, -180], [85, 180]],
+    maxBoundsViscosity: 1,
+    // Keeps the view inside the latitudes Mercator can actually project.
+    // The grey band across the top of your map was empty space above ~85°,
+    // where the projection stretches to infinity and no tiles exist.
+    // Viscosity 1 makes that edge feel solid instead of rubber-banding.
   });
 
   L.tileLayer(TILE_URL, {

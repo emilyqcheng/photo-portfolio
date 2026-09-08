@@ -749,7 +749,7 @@ img { display: block; max-width: 100%; }
        extra tracks removes every possible source of horizontal asymmetry
        rather than trying to balance it. */
   }
-  
+
   .lb-arrow {
     /* Float the arrows over the photo edges — on a narrow screen, giving
        them their own grid columns would steal width the photo needs. */
@@ -915,7 +915,7 @@ img { display: block; max-width: 100%; }
 .map-intro {
   color: var(--text-dim);
   font-size: 0.88rem;
-  max-width: 52ch;
+  max-width: 80ch;
   margin: 0 0 1.75rem;
 }
 
