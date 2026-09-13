@@ -84,6 +84,11 @@
     "lng": -71.9785356,
     "matched": "Cuzco, Distrito de Cusco, Cusco, 08001, Perú"
   },
+  "Diversey Harbor, Chicago, Illinois": {
+    "lat": 41.9294985,
+    "lng": -87.6335702,
+    "matched": "Diversey Harbor, Lincoln Park, Chicago, Lake View Township, Cook County, Illinois, United States"
+  },
   "Dyrhólaey, Iceland": {
     "lat": 63.3988334,
     "lng": -19.1266314,
@@ -98,6 +103,11 @@
     "lat": 37.8176155,
     "lng": -122.4783123,
     "matched": "Golden Gate Bridge, Golden Gate Bridge West Sidewalk, San Francisco, Marin County, California, 94129, United States"
+  },
+  "Golden Gate Park, San Francisco, California": {
+    "lat": 37.7693681,
+    "lng": -122.4821837,
+    "matched": "Golden Gate Park, San Francisco, California, United States"
   },
   "Great Smoky Mountains National Park, Tennessee": {
     "lat": 35.63422,
@@ -129,6 +139,11 @@
     "lng": -72.5332659070674,
     "matched": "entered manually — approximate point on the trail"
   },
+  "Indiana Dunes National Park, Indiana": {
+    "lat": 41.6152664,
+    "lng": -87.2072619,
+    "matched": "Indiana Dunes National Park, Portage, Hobart Township, Porter County, Indiana, United States"
+  },
   "Ingjaldshólskirkja, Iceland": {
     "lat": 64.9114836,
     "lng": -23.8576612,
@@ -153,6 +168,11 @@
     "lat": 51.4249668,
     "lng": -116.177535,
     "matched": "Lake Louise, Improvement District No. 9, Alberta, Canada"
+  },
+  "Lake View, Chicago, Illinois": {
+    "lat": 41.9442357,
+    "lng": -87.6541725,
+    "matched": "Lake View, Chicago, Lake View Township, Cook County, Illinois, United States"
   },
   "Lu Xun Native Place, Shaoxing, China": {
     "lat": 29.99394,
@@ -219,6 +239,11 @@
     "lng": -72.5306913649403,
     "matched": "entered manually - Phuyupatamarca Camp"
   },
+  "Ping Tom Memorial Park, Chicago, Illinois": {
+    "lat": 41.8588987,
+    "lng": -87.6325387,
+    "matched": "Ping Tom Memorial Park, 300, South Loop, Near South Side, Chicago, South Chicago Township, Cook County, Illinois, 60616, United States"
+  },
   "Qorikancha, Cusco, Peru": {
     "lat": -13.5202622,
     "lng": -71.9751405,
@@ -263,6 +288,11 @@
     "lat": 31.2312707,
     "lng": 121.4700152,
     "matched": "上海市, 中国"
+  },
+  "Starved Rock State Park, Illinois": {
+    "lat": 41.3182029,
+    "lng": -89.0398294,
+    "matched": "Starved Rock State Park, North Utica, LaSalle County, Illinois, United States"
   },
   "Stjórnarfoss, Iceland": {
     "lat": 63.7993723,
