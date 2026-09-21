@@ -5,22 +5,22 @@ build_data.py — generates data/photos.json for the portfolio site.
 WHAT IT DOES
     Reads three sources and merges them:
       1. images/full/*.jpg   -> camera settings + dimensions, read from EXIF
-      2. data/captions.json  -> titles, places, notes, and display order (yours)
+      2. data/captions.json  -> titles, places, notes, and display order
       3. data/locations.json -> coordinates, written by geocode.py
     Writes:
       4. data/photos.json    -> the single file the website fetches
 
 WHY IT'S SPLIT THIS WAY
-    Machine-readable facts (aperture, ISO, pixel dimensions) should never be
-    typed by hand — they already exist inside the files. Human judgement
-    (what to call a photo, what to say about it) can't be extracted from
-    anything. So each lives in its own place, and this script joins them.
+    Machine-readable facts (aperture, ISO, pixel dimensions) already exist 
+    inside the files. Human judgement (what to call a photo, what to say
+    about it) can't be extracted from anything. So each lives in its own
+    place, and this script joins them.
 
     This script only ever WRITES to data/photos.json. It never modifies
-    captions.json. That means you can re-run it as often as you like —
-    after adding photos, after re-exporting, after reordering — and your
+    captions.json, which means you can re-run it as often as you like, e.g.
+    after adding photos, after re-exporting, after reordering, and your
     writing is never at risk. Generated files are disposable; source files
-    are precious. Keep the line between them sharp.
+    are precious.
 
 USAGE
     python3 build_data.py
@@ -55,7 +55,7 @@ CAPTIONS_FILE = ROOT / "data" / "captions.json"
 LOCATIONS_FILE = ROOT / "data" / "locations.json"   # written by geocode.py
 OUTPUT_FILE = ROOT / "data" / "photos.json"
 
-# Used to build the copyright line. Change this and every photo updates.
+# Used to build the copyright line.
 OWNER = "Emily Cheng"
 
 # LENS NAME NORMALISATION
@@ -63,9 +63,8 @@ OWNER = "Emily Cheng"
 # shots carry the full marketing name, others only the bare optical spec. The
 # lens is physically the same, so the site shouldn't say two different things.
 #
-# Left side = the raw string as it appears in EXIF (the script prints every
-# distinct value it finds, so you can copy them in exactly).
-# Right side = what you want displayed.
+# Left side = the raw string as it appears in EXIF.
+# Right side = what is displayed.
 LENS_ALIASES = {
     # Nikon 18-55mm — 47 photos, split across two raw spellings
     "18.0-55.0 mm f/3.5-5.6": "AF-S DX NIKKOR 18-55mm f/3.5-5.6G VR II",
@@ -291,12 +290,6 @@ def read_exif(path):
             except ValueError:
                 pass  # unparseable date is not worth crashing over
 
-        # Note what we deliberately DON'T copy: BodySerialNumber. It's in your
-        # files, but this output becomes a public file on the internet, and
-        # your camera's serial number has no business being there. When a
-        # script turns private files into published data, decide what crosses
-        # that line on purpose rather than by accident.
-
     return data
 
 
@@ -380,7 +373,7 @@ def main():
                 "full": f"images/full/{filename}",
                 "thumb": f"images/thumbs/{filename}",
                 "title": entry.get("title", ""),
-                "location": entry.get("location", ""),   # geocoder input
+                "location": entry.get("location", ""),    # geocoder input
                 "place": resolve_place(entry),            # what the panel shows
                 # lat/lng are None when there's no location or no lookup yet.
                 # The map JS skips those; the gallery doesn't care either way.
@@ -442,8 +435,8 @@ def main():
     report(missing_exif, "No EXIF — metadata was stripped on export")
 
     # Show every distinct lens string found, with a count and how it will be
-    # displayed. Anything showing "(auto-tidied)" is not in LENS_ALIASES yet —
-    # paste the raw string in if you want a different name.
+    # displayed. Anything showing "(auto-tidied)" is not in LENS_ALIASES yet.
+    # Paste the raw string in if you want a different name.
     if lens_values:
         print(f"\n  Lenses found ({len(lens_values)} distinct)")
         for raw in sorted(lens_values):
