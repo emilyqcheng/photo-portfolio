@@ -19,12 +19,6 @@
     <a href="index.html" class="wordmark">
       <span class="wordmark__name">Emily Cheng</span>
       <span class="wordmark__tagline">the world through my lens</span>
-      <!-- If you export the wordmark as SVG (the route I'd recommend, since
-           it guarantees the real Sofia Pro and Ernie shapes), replace both
-           spans above with a single image:
-             <img src="images/wordmark.svg"
-                  alt="Emily Cheng — the world through my lens">
-           and delete the .wordmark__name / .wordmark__tagline CSS. -->
     </a>
 
     <nav class="filters" aria-label="Photo categories">
@@ -135,11 +129,7 @@
   <!-- type="module" enables `import` / `export`, which is how main.js pulls in
        lightbox.js. Modules are deferred automatically, so they always run
        after the HTML is parsed — no need to sit at the bottom of the body,
-       though leaving them here does no harm.
-
-       One consequence worth knowing: modules are subject to CORS, so they do
-       NOT work over file://. You already need a local server for fetch(),
-       so nothing changes in practice. -->
+       though leaving them here does no harm. -->
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
